@@ -263,6 +263,38 @@
   background: linear-gradient(90deg, #34d399, #059669);
   color: #031810;
 } */
+/* --- Expired Style --- */
+.code-line.expired {
+  position: relative;
+  pointer-events: none;
+  user-select: none;
+}
+
+.code-line.expired > * {
+  filter: blur(3px);
+  opacity: 0.4;
+}
+
+.code-line.expired::after {
+  content: "EXPIRED";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff4d4d;
+  font-weight: bold;
+  font-size: 16px;
+  /* background: rgba(0, 0, 0, 0.8); */
+  padding: 4px 10px;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 2;
+  filter: none;
+  text-shadow: 0 0 6px rgba(255, 0, 0, 0.6);
+}
+
+
 /* Custom listbox styles */
 .listbox {
   position: relative;
@@ -290,9 +322,9 @@
   align-items: center;
   gap: 8px;
 }
-.listbox-display span svg{
-width: 16px;
-height: 16px;
+.listbox-display span svg {
+  width: 16px;
+  height: 16px;
 }
 .listbox-display svg {
   transition: transform 0.2s ease;
@@ -306,9 +338,11 @@ height: 16px;
   margin: 4px 0 0 0;
   padding: 4px;
   position: absolute;
-  left: 0;
+  /* left: 0; */
   right: 0;
   top: 100%;
+  width: max-content;
+  min-width: 100px;
   background: rgba(10, 14, 25, 0.95);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -390,11 +424,11 @@ height: 16px;
   );
   box-shadow: 0 0 6px rgba(var(--accent2), 0.5);
 }
-#instructions-title{
+#instructions-title {
   display: flex;
   justify-content: space-between;
 }
-#instructions-title li{
+#instructions-title li {
   text-transform: none;
 }
 /* .report-link { display:inline-block; margin-top:16px; font-size:12px; text-decoration:none; color:var(--muted); background:rgba(255,255,255,0.05); padding:8px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); transition:background .25s ease, color .25s ease; }

@@ -247,9 +247,44 @@ const gogInstructions = [
   "Start playing the game.",
 ];
 
-const gameSpecificInstructions = {
-  2: gogInstructions,
-  3: gogInstructions,
+const gamesInstructions = {
+  1: {
+    "Method 1": [
+      "Go to the SHiFT website: <a href=\"https://shift.gearboxsoftware.com/\" target=\"_blank\" rel=\"noopener noreferrer\">shift.gearboxsoftware.com</a>",
+      "Sign in or create a SHiFT account",
+      "Link your gaming platform (Steam, Epic, Xbox, or PlayStation) at the <strong>Gaming Platforms page</strong>",
+      "Open the <strong>Rewards page</strong> and Enter the SHiFT code in the 'Code Redemption' section",
+      "Choose your platform if asked and click Redeem",
+      "Open Borderlands 4 and check your in-game mail or inventory for the reward",
+    ],
+    "Method 2": [
+      "Open Borderlands 4",
+      "Go to the Social or SHiFT tab in the main menu",
+      "Select the Rewards or Redeem Code option",
+      "Enter your SHiFT code and confirm",
+      "Check your in-game mail or inventory for the reward",
+    ],
+  },
+  2: { PC: gogInstructions },
+  3: { PC: gogInstructions },
+  4: { PC: gogInstructions },
+  5: { PC: gogInstructions },
+  6: { PC: gogInstructions },
+  7: { PC: gogInstructions },
+  8: { PC: gogInstructions },
+  9: { PC: gogInstructions },
+  10: { PC: gogInstructions },
+  11: { PC: gogInstructions },
+  12: { PC: gogInstructions },
+  13: { PC: gogInstructions },
+  14: { PC: gogInstructions },
+  15: { PC: gogInstructions },
+  16: { PC: gogInstructions },
+  17: { PC: gogInstructions },
+  18: { PC: gogInstructions },
+  19: { PC: gogInstructions },
+  20: { PC: gogInstructions },
+  21: { PC: gogInstructions },
 };
 
 const platformLogo = {
@@ -303,7 +338,7 @@ if (window.location.pathname.endsWith("index.html") || !pagination) {
   PAGE_SIZE = 6;
 }
 let currentPage = 1;
-
+let activeInstructionsPlatformValue = "none";
 function escapeHtml(s) {
   return String(s).replace(
     /[&<>"']/g,
@@ -457,6 +492,23 @@ function render(showBusy = false, keepFocus = false) {
   if (!keepFocus && searchEl) searchEl.focus();
 }
 
+function renderInstructions() {
+  if (!instructionsEl) return;
+  instructionsEl.innerHTML = "";
+
+  const instructions = gamesInstructions[currentGameId];
+  if (!instructions) return;
+
+  const platformInstructions = instructions[activeInstructionsPlatformValue];
+  if (!platformInstructions) return;
+  instructionsEl.innerHTML =
+    '<ol class="redeem-steps">' +
+    platformInstructions
+      .map((line) => `<li>${sanitizeInstruction(line)}</li>`)
+      .join("") +
+    "</ol>";
+}
+
 // events
 let searchDebounce;
 searchEl?.addEventListener("input", () => {
@@ -559,22 +611,26 @@ function initListbox(box, onChange) {
   });
 }
 initListbox(sortBox, (val) => {
+  if (sortValue === val) return;
   sortValue = val;
   currentPage = 1;
   render();
 });
 initListbox(platformBox, (val) => {
+  if (platformValue === val) return;
   platformValue = val;
   currentPage = 1;
   render();
 });
 initListbox(typeBox, (val) => {
+  if (typeValue === val) return;
   typeValue = val;
   currentPage = 1;
   render();
 });
 initListbox(instructionsPlatformListbox, (val) => {
-  activeGenre = val === "none" ? null : val;
+  activeInstructionsPlatformValue = val;
+  renderInstructions();
 });
 document.addEventListener("click", () => {
   toggleListbox(sortBox, false);
@@ -631,9 +687,7 @@ function openModal(id, title) {
   const img = modal.querySelector("#modal-image img");
   img.src = game.cover;
   img.alt = `${title} cover art`;
-  const instructionsPlatforms = Array.from(
-    game.platform.split(", ").map((p) => p.trim())
-  );
+  const instructionsPlatforms = Object.keys(gamesInstructions[currentGameId]);
   const platsList = modal.querySelector(".listbox-options");
   platsList.innerHTML = "";
   instructionsPlatforms.forEach((g) => {
@@ -651,11 +705,11 @@ function openModal(id, title) {
     instructionsPlatformListbox,
     platsList.firstChild.dataset.value || "none"
   );
-
-  const instr =
-    gameSpecificInstructions[id] ||
-    baseInstructions[game.platform] ||
-    baseInstructions["Multi"];
+  activeInstructionsPlatformValue =
+    instructionsPlatformListbox.getAttribute("data-value");
+  // baseInstructions[game.platform] ||
+  // baseInstructions["Multi"];
+  const instr = gamesInstructions[id][activeInstructionsPlatformValue];
   instructionsEl.innerHTML =
     '<ol class="redeem-steps">' +
     instr.map((line) => `<li>${sanitizeInstruction(line)}</li>`).join("") +
