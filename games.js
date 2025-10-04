@@ -6,7 +6,7 @@ const games = [
     desc: "Redeemable promo codes that grant players free rewards like Golden Keys, cosmetics, and bonus loot.",
     cover:
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1285190/986a88d1b0e1420b00183def2a7034508353afa3/header.jpg?t=1758555255",
-    platform: "Multi",
+    platform: "PC, Xbox, PlayStation, Switch",
     type: "In-game item",
   },
   {
@@ -32,7 +32,7 @@ const games = [
     title: "Roblox Digital Card",
     desc: "A redeemable code that grants Robux, the in-game currency used to buy avatar items, game passes, and other premium content on Roblox.",
     cover: "assets/roblox.jpg",
-    platform: "Multi",
+    platform: "PC, Xbox, PlayStation",
     type: "In-game item",
   },
   {
@@ -88,7 +88,8 @@ const games = [
     id: 11,
     title: "Secret Stash of the Ancients",
     desc: "A small Sea of Thieves bundle that gives 150 Ancient Coins to spend on premium cosmetics in the Pirate Emporium.",
-    cover: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172620/header.jpg?t=1755260861",
+    cover:
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172620/header.jpg?t=1755260861",
     platform: "PC, Xbox, PlayStation",
     type: "In-game item",
   },
@@ -362,7 +363,13 @@ function applyFilters() {
   const q = searchEl.value.trim().toLowerCase();
   let list = games.filter((g) => g.title.toLowerCase().includes(q));
   if (platformValue !== "all")
-    list = list.filter((g) => g.platform.includes(platformValue));
+    list = list.filter((g) => {
+      if (platformValue === "Multi") {
+        return g.platform.includes(", ");
+      } else {
+        return g.platform.includes(platformValue);
+      }
+    });
   if (typeValue !== "all") list = list.filter((g) => g.type === typeValue);
   // sort
   if (sortValue === "az")
