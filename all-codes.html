@@ -178,10 +178,27 @@
         <div class="modal" role="document">
             <button class="close-x" aria-label="Close" onclick="closeModal()">✕</button>
             <h3 id="modal-title" style="margin:4px 0 4px 0">Redeem</h3>
-            <div id="modal-image"><img src="assets/borderlands4.jpg" alt=""></div>
-            <h4 class="modal-subtitle" id="codes-title" style="margin-top:18px">Codes</h4>
+            <div id="modal-image"><img src="assets/logo.png" alt=""></div>
+            <div class="modal-subtitle" id="codes-title" style="margin-top:18px">Codes</div>
             <div id="codesWrapper" class="codes-wrapper"></div>
-            <h4 class="modal-subtitle" id="instructions-title">Instructions</h4>
+            <div class="modal-subtitle" id="instructions-title"><span class="subtitle">Instructions</span>
+                <!-- Instructions Platform Listbox -->
+                <div class="listbox" id="instructionsPlatformListbox" role="listbox" tabindex="0" aria-label=" filter"
+                    aria-activedescendant="none" data-value="none"
+                    style="display: flex; gap: 4px; max-width: max-content;">
+                    Platform:
+                    <button type="button" class="listbox-display" aria-haspopup="listbox" aria-expanded="false"
+                        style="padding: 0;border: none;background: none;"><span>Loading Platforms…</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="m19 9l-7 6l-7-6" />
+                        </svg>
+                    </button>
+                    <ul class="listbox-options" role="presentation" hidden>
+                        <!-- platform options injected -->
+                    </ul>
+                </div>
+            </div>
             <div id="modal-instructions" class="redeem-instructions"></div>
             <button type="button" class="report-link" id="reportTrigger">
                 Expired or redeemed before? Report it
