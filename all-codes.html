@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>All Games • RedemptionVerse</title>
+    <meta name="description" content="Browse all games and redemption codes on RedemptionVerse." />
+    <link rel="shortcut icon" href="assets/logo_square.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="games.css">
+</head>
+
+<body>
+    <div class="bg-particles" aria-hidden="true"></div>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="logo"><img src="assets/logo.png" alt="" /></div>
+                <div class="title">
+                    <h1 style="margin:0;font-size:18px">RedemptionVerse</h1>
+                    <p>The Universe of Redemption Codes</p>
+                </div>
+            </div>
+            <nav aria-label="Primary">
+                <a href="index.html" class="btn-secondary" style="margin-left:0">Home</a>
+                <a href="#top" class="btn">Browse All Codes</a>
+            </nav>
+        </header>
+
+        <a id="top" class="sr-only" tabindex="-1">Top of page</a>
+
+        <a href="index.html" class="back-link" aria-label="Back to home">← Back to Home</a>
+        <h2 class="page-heading">All Codes</h2>
+        <p class="sub">The full catalog of games and services with redemption codes. Use search, genre tags and
+            sorting to narrow down your list. Click any title to reveal the redemption codes available.</p>
+
+        <section aria-labelledby="games-heading" style="margin-top:10px">
+            <h3 id="games-heading" class="sr-only">Games and services list</h3>
+
+            <div class="filters-shell" role="region" aria-label="Filters">
+                <input id="search" type="search" placeholder="Search games and services..." aria-label="Search games"
+                    autocomplete="off" />
+                <!-- Custom listboxes replacing native selects -->
+                <div class="listbox" id="sortBox" role="listbox" tabindex="0" aria-label="Sort order"
+                    aria-activedescendant="sort-opt-featured" data-value="featured">
+                    <button type="button" class="listbox-display" aria-haspopup="listbox"
+                        aria-expanded="false"><span>Featured
+                            order</span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            viewBox="0 0 24 24">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="m19 9l-7 6l-7-6" />
+                        </svg></button>
+                    <ul class="listbox-options" role="presentation" hidden>
+                        <li id="sort-opt-featured" role="option" data-value="featured" aria-selected="true">Featured
+                            order</li>
+                        <li id="sort-opt-az" role="option" data-value="az" aria-selected="false">Alphabetical A -> Z
+                        </li>
+                        <li id="sort-opt-za" role="option" data-value="za" aria-selected="false">Alphabetical Z -> A
+                        </li>
+                    </ul>
+                </div>
+                <div class="listbox" id="platformBox" role="listbox" tabindex="0" aria-label="Platform filter"
+                    aria-activedescendant="plat-opt-all" data-value="all">
+                    <button type="button" class="listbox-display" aria-haspopup="listbox"
+                        aria-expanded="false"><span>All
+                            Platforms</span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            viewBox="0 0 24 24">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="m19 9l-7 6l-7-6" />
+                        </svg></button>
+                    <ul class="listbox-options" role="presentation" hidden>
+                        <li id="plat-opt-all" role="option" data-value="all" aria-selected="true">All Platforms</li>
+                        <li id="plat-opt-PC" role="option" data-value="PC" aria-selected="false"><svg
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <g fill="none">
+                                    <path
+                                        d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                                    <path fill="currentColor"
+                                        d="M21 13v7.434a1.5 1.5 0 0 1-1.553 1.499l-.133-.011L12 21.008V13zm-11 0v7.758l-5.248-.656A2 2 0 0 1 3 18.117V13zm9.314-10.922a1.5 1.5 0 0 1 1.68 1.355l.006.133V11h-9V2.992zM10 3.242V11H3V5.883a2 2 0 0 1 1.752-1.985z" />
+                                </g>
+                            </svg>PC</li>
+                        <li id="plat-opt-Xbox" role="option" data-value="Xbox" aria-selected="false"><svg
+                                xmlns="http://www.w3.org/2000/svg" title="Xbox" viewBox="0 0 512 512">
+                                <path fill="currentColor"
+                                    d="M369.9 318.2c44.3 54.3 64.7 98.8 54.4 118.7c-7.9 15.1-56.7 44.6-92.6 55.9c-29.6 9.3-68.4 13.3-100.4 10.2c-38.2-3.7-76.9-17.4-110.1-39C93.3 445.8 87 438.3 87 423.4c0-29.9 32.9-82.3 89.2-142.1c32-33.9 76.5-73.7 81.4-72.6c9.4 2.1 84.3 75.1 112.3 109.5M188.6 143.8c-29.7-26.9-58.1-53.9-86.4-63.4c-15.2-5.1-16.3-4.8-28.7 8.1c-29.2 30.4-53.5 79.7-60.3 122.4c-5.4 34.2-6.1 43.8-4.2 60.5c5.6 50.5 17.3 85.4 40.5 120.9c9.5 14.6 12.1 17.3 9.3 9.9c-4.2-11-.3-37.5 9.5-64c14.3-39 53.9-112.9 120.3-194.4m311.6 63.5C483.3 127.3 432.7 77 425.6 77c-7.3 0-24.2 6.5-36 13.9c-23.3 14.5-41 31.4-64.3 52.8C367.7 197 427.5 283.1 448.2 346c6.8 20.7 9.7 41.1 7.4 52.3c-1.7 8.5-1.7 8.5 1.4 4.6c6.1-7.7 19.9-31.3 25.4-43.5c7.4-16.2 15-40.2 18.6-58.7c4.3-22.5 3.9-70.8-.8-93.4M141.3 43C189 40.5 251 77.5 255.6 78.4c.7.1 10.4-4.2 21.6-9.7c63.9-31.1 94-25.8 107.4-25.2c-63.9-39.3-152.7-50-233.9-11.7c-23.4 11.1-24 11.9-9.4 11.2" />
+                            </svg>Xbox</li>
+                        <li id="plat-opt-PlayStation" role="option" data-value="PlayStation" aria-selected="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" title="PlayStation" viewBox="0 0 576 512">
+                                <path fill="currentColor"
+                                    d="M570.9 372.3c-11.3 14.2-38.8 24.3-38.8 24.3L327 470.2v-54.3l150.9-53.8c17.1-6.1 19.8-14.8 5.8-19.4c-13.9-4.6-39.1-3.3-56.2 2.9L327 381.1v-56.4c23.2-7.8 47.1-13.6 75.7-16.8c40.9-4.5 90.9.6 130.2 15.5c44.2 14 49.2 34.7 38 48.9m-224.4-92.5v-139c0-16.3-3-31.3-18.3-35.6c-11.7-3.8-19 7.1-19 23.4v347.9l-93.8-29.8V32c39.9 7.4 98 24.9 129.2 35.4C424.1 94.7 451 128.7 451 205.2c0 74.5-46 102.8-104.5 74.6M43.2 410.2c-45.4-12.8-53-39.5-32.3-54.8c19.1-14.2 51.7-24.9 51.7-24.9l134.5-47.8v54.5l-96.8 34.6c-17.1 6.1-19.7 14.8-5.8 19.4s39.1 3.3 56.2-2.9l46.4-16.9v48.8c-51.6 9.3-101.4 7.3-153.9-10" />
+                            </svg>PlayStation
+                        </li>
+                        <li id="plat-opt-Switch" role="option" data-value="Switch" aria-selected="false"><svg
+                                xmlns="http://www.w3.org/2000/svg" title="Nintendo Switch" viewBox="0 0 16 16">
+                                <g fill="currentColor">
+                                    <path
+                                        d="M9.34 8.005c0-4.38.01-7.972.023-7.982C9.373.01 10.036 0 10.831 0c1.153 0 1.51.01 1.743.05c1.73.298 3.045 1.6 3.373 3.326c.046.242.053.809.053 4.61c0 4.06.005 4.537-.123 4.976c-.022.076-.048.15-.08.242a4.14 4.14 0 0 1-3.426 2.767c-.317.033-2.889.046-2.978.013c-.05-.02-.053-.752-.053-7.979m4.675.269a1.62 1.62 0 0 0-1.113-1.034a1.61 1.61 0 0 0-1.938 1.073a1.9 1.9 0 0 0-.014.935a1.63 1.63 0 0 0 1.952 1.107c.51-.136.908-.504 1.11-1.028c.11-.285.113-.742.003-1.053M3.71 3.317c-.208.04-.526.199-.695.348c-.348.301-.52.729-.494 1.232c.013.262.03.332.136.544c.155.321.39.556.712.715c.222.11.278.123.567.133c.261.01.354 0 .53-.06c.719-.242 1.153-.94 1.03-1.656c-.142-.852-.95-1.422-1.786-1.256" />
+                                    <path
+                                        d="M3.425.053a4.14 4.14 0 0 0-3.28 3.015C0 3.628-.01 3.956.005 8.3c.01 3.99.014 4.082.08 4.39c.368 1.66 1.548 2.844 3.224 3.235c.22.05.497.06 2.29.07c1.856.012 2.048.009 2.097-.04c.05-.05.053-.69.053-7.94c0-5.374-.01-7.906-.033-7.952c-.033-.06-.09-.063-2.03-.06c-1.578.004-2.052.014-2.26.05Zm3 14.665l-1.35-.016c-1.242-.013-1.375-.02-1.623-.083a2.81 2.81 0 0 1-2.08-2.167c-.074-.335-.074-8.579-.004-8.907a2.85 2.85 0 0 1 1.716-2.05c.438-.176.64-.196 2.058-.2l1.282-.003v13.426Z" />
+                                </g>
+                            </svg>Switch</li>
+                        <li id="plat-opt-Multi" role="option" data-value="Multi" aria-selected="false"><svg
+                                xmlns="http://www.w3.org/2000/svg" title="Multiple Platforms" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M5.566 4.657A4.5 4.5 0 0 1 6.75 4.5h10.5q.616.002 1.183.157A3 3 0 0 0 15.75 3h-7.5a3 3 0 0 0-2.684 1.657M2.25 12a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3zm3-4.5q-.616.002-1.184.157A3 3 0 0 1 6.75 6h10.5a3 3 0 0 1 2.683 1.657A4.5 4.5 0 0 0 18.75 7.5z" />
+                            </svg>Multi</li>
+                    </ul>
+                </div>
+                <div class="listbox" id="typeBox" role="listbox" tabindex="0" aria-label="Type filter"
+                    aria-activedescendant="type-opt-all" data-value="all">
+                    <button type="button" class="listbox-display" aria-haspopup="listbox"
+                        aria-expanded="false"><span>All
+                            Types</span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            viewBox="0 0 24 24">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="m19 9l-7 6l-7-6" />
+                        </svg></button>
+                    <ul class="listbox-options" role="presentation" hidden>
+                        <li id="type-opt-all" role="option" data-value="all" aria-selected="true">All Types</li>
+                        <li id="type-opt-Game" role="option" data-value="Game" aria-selected="false"><svg
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill="currentColor" fill-rule="evenodd"
+                                    d="M15 1.25a.75.75 0 0 1 .75.75v1A1.75 1.75 0 0 1 14 4.75h-1a.25.25 0 0 0-.25.25v1H14c3.771 0 5.657 0 6.828 1.172S22 10.229 22 14s0 5.657-1.172 6.828S17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172S2 17.771 2 14s0-5.657 1.172-6.828S6.229 6 10 6h1.25V5c0-.966.784-1.75 1.75-1.75h1a.25.25 0 0 0 .25-.25V2a.75.75 0 0 1 .75-.75M8.75 12a.75.75 0 0 0-1.5 0v1.05a.2.2 0 0 1-.2.2H6a.75.75 0 0 0 0 1.5h1.05c.11 0 .2.09.2.2V16a.75.75 0 0 0 1.5 0v-1.05c0-.11.09-.2.2-.2H10a.75.75 0 0 0 0-1.5H8.95a.2.2 0 0 1-.2-.2zM15 13.5a1 1 0 1 0 0-2a1 1 0 0 0 0 2m3 2a1 1 0 1 1-2 0a1 1 0 0 1 2 0"
+                                    clip-rule="evenodd" />
+                            </svg>Game</li>
+                        <li id="type-opt-In-Game-Item" role="option" data-value="In-game item" aria-selected="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill="currentColor" fill-rule="evenodd"
+                                    d="M6.448 1.75c-.898 0-1.648 0-2.242.08c-.628.084-1.195.27-1.65.725c-.456.456-.642 1.023-.726 1.65c-.08.595-.08 1.345-.08 2.243v.104c0 .898 0 1.648.08 2.242c.084.628.27 1.195.725 1.65c.456.456 1.023.642 1.65.726c.595.08 1.345.08 2.243.08h.104c.898 0 1.648 0 2.242-.08c.628-.084 1.195-.27 1.65-.726c.456-.455.642-1.022.726-1.65c.08-.594.08-1.344.08-2.242v-.104c0-.898 0-1.648-.08-2.242c-.084-.628-.27-1.195-.726-1.65c-.455-.456-1.022-.642-1.65-.726c-.594-.08-1.344-.08-2.242-.08zM3.616 3.616c.13-.13.328-.237.79-.3c.482-.064 1.13-.066 2.094-.066s1.612.002 2.095.067c.461.062.659.169.789.3s.237.327.3.788c.064.483.066 1.131.066 2.095s-.002 1.612-.067 2.095c-.062.461-.169.659-.3.789s-.327.237-.788.3c-.483.064-1.131.066-2.095.066s-1.612-.002-2.095-.067c-.461-.062-.659-.169-.789-.3s-.237-.327-.3-.788C3.253 8.112 3.25 7.464 3.25 6.5s.002-1.612.067-2.095c.062-.461.169-.659.3-.789"
+                                    clip-rule="evenodd" />
+                                <path fill="currentColor"
+                                    d="M18.25 3.5a.75.75 0 0 0-1.5 0v2.25H14.5a.75.75 0 0 0 0 1.5h2.25V9.5a.75.75 0 0 0 1.5 0V7.25h2.25a.75.75 0 0 0 0-1.5h-2.25z" />
+                                <path fill="currentColor" fill-rule="evenodd"
+                                    d="M17.448 12.75h.104c.899 0 1.648 0 2.242.08c.628.084 1.195.27 1.65.726c.456.455.642 1.022.726 1.65c.08.594.08 1.343.08 2.242v.104c0 .899 0 1.648-.08 2.242c-.084.628-.27 1.195-.726 1.65c-.455.456-1.022.642-1.65.726c-.594.08-1.343.08-2.242.08h-.104c-.898 0-1.648 0-2.242-.08c-.628-.084-1.195-.27-1.65-.726c-.456-.455-.642-1.022-.726-1.65c-.08-.594-.08-1.343-.08-2.242v-.104c0-.899 0-1.648.08-2.242c.084-.628.27-1.195.726-1.65c.455-.456 1.022-.642 1.65-.726c.594-.08 1.343-.08 2.242-.08m-2.043 1.566c-.461.063-.659.17-.789.3s-.237.328-.3.79c-.064.482-.066 1.13-.066 2.094s.002 1.612.066 2.095c.063.461.17.659.3.789s.328.237.79.3c.482.064 1.13.066 2.094.066s1.612-.002 2.095-.067c.461-.062.659-.169.789-.3s.237-.327.3-.788c.064-.483.066-1.131.066-2.095s-.002-1.612-.067-2.095c-.062-.461-.169-.659-.3-.789s-.327-.237-.788-.3c-.483-.064-1.131-.066-2.095-.066s-1.612.002-2.095.066M6.448 12.75c-.898 0-1.648 0-2.242.08c-.628.084-1.195.27-1.65.726c-.456.455-.642 1.022-.726 1.65c-.08.594-.08 1.343-.08 2.242v.104c0 .899 0 1.648.08 2.242c.084.628.27 1.195.725 1.65c.456.456 1.023.642 1.65.726c.595.08 1.345.08 2.243.08h.104c.898 0 1.648 0 2.242-.08c.628-.084 1.195-.27 1.65-.726c.456-.455.642-1.022.726-1.65c.08-.594.08-1.343.08-2.242v-.104c0-.899 0-1.648-.08-2.242c-.084-.628-.27-1.195-.726-1.65c-.455-.456-1.022-.642-1.65-.726c-.594-.08-1.344-.08-2.242-.08zm-2.832 1.866c.13-.13.328-.237.79-.3c.482-.064 1.13-.066 2.094-.066s1.612.002 2.095.066c.461.063.659.17.789.3s.237.328.3.79c.064.482.066 1.13.066 2.094s-.002 1.612-.067 2.095c-.062.461-.169.659-.3.789s-.327.237-.788.3c-.483.064-1.131.066-2.095.066s-1.612-.002-2.095-.067c-.461-.062-.659-.169-.789-.3s-.237-.327-.3-.788c-.064-.483-.066-1.131-.066-2.095s.002-1.612.067-2.095c.062-.461.169-.659.3-.789"
+                                    clip-rule="evenodd" />
+                            </svg>In-game item
+                        </li>
+                        <li id="type-opt-Service" role="option" data-value="Service" aria-selected="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M4.979 9.685C2.993 8.891 2 8.494 2 8s.993-.89 2.979-1.685l2.808-1.123C9.773 4.397 10.767 4 12 4s2.227.397 4.213 1.192l2.808 1.123C21.007 7.109 22 7.506 22 8s-.993.89-2.979 1.685l-2.808 1.124C14.227 11.603 13.233 12 12 12s-2.227-.397-4.213-1.191z" />
+                                <path fill="currentColor" fill-rule="evenodd"
+                                    d="M2 8c0 .494.993.89 2.979 1.685l2.808 1.124C9.773 11.603 10.767 12 12 12s2.227-.397 4.213-1.191l2.808-1.124C21.007 8.891 22 8.494 22 8s-.993-.89-2.979-1.685l-2.808-1.123C14.227 4.397 13.233 4 12 4s-2.227.397-4.213 1.192L4.98 6.315C2.993 7.109 2 7.506 2 8"
+                                    clip-rule="evenodd" />
+                                <path fill="currentColor"
+                                    d="m5.766 10l-.787.315C2.993 11.109 2 11.507 2 12s.993.89 2.979 1.685l2.808 1.124C9.773 15.603 10.767 16 12 16s2.227-.397 4.213-1.191l2.808-1.124C21.007 12.891 22 12.493 22 12s-.993-.89-2.979-1.685L18.234 10l-2.021.809C14.227 11.603 13.233 12 12 12s-2.227-.397-4.213-1.191z"
+                                    opacity="0.7" />
+                                <path fill="currentColor"
+                                    d="m5.766 14l-.787.315C2.993 15.109 2 15.507 2 16s.993.89 2.979 1.685l2.808 1.124C9.773 19.603 10.767 20 12 20s2.227-.397 4.213-1.192l2.808-1.123C21.007 16.891 22 16.494 22 16c0-.493-.993-.89-2.979-1.685L18.234 14l-2.021.809C14.227 15.603 13.233 16 12 16s-2.227-.397-4.213-1.191z"
+                                    opacity="0.4" />
+                            </svg>Service
+                        </li>
+                    </ul>
+                </div>
+                <button id="resetBtn" class="small-btn" style="display:none">Reset</button>
+            </div>
+
+            <div class="results-bar" aria-live="polite" aria-atomic="true" id="resultsMeta">Loading codes…</div>
+            <div class="grid" id="gamesGrid" aria-live="polite" aria-busy="true"></div>
+            <div id="emptyState" class="no-results" style="display:none">No items match your filters. <button
+                    class="small-btn" id="clearAllInline">Clear Filters</button></div>
+            <nav class="pagination" aria-label="Pagination" id="pagination"></nav>
+        </section>
+
+        <footer>
+            <p style="margin: 0;">&copy; <span id="year"></span> RedemptionVerse. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Redeem Modal (always shows codes) -->
+    <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-hidden="true"
+        aria-labelledby="modal-title" aria-describedby="instructions-title codes-title">
+        <div class="modal" role="document">
+            <button class="close-x" aria-label="Close" onclick="closeModal()">✕</button>
+            <h3 id="modal-title" style="margin:4px 0 4px 0">Redeem</h3>
+            <div id="modal-image"><img src="assets/borderlands4.jpg" alt=""></div>
+            <h4 class="modal-subtitle" id="codes-title" style="margin-top:18px">Codes</h4>
+            <div id="codesWrapper" class="codes-wrapper"></div>
+            <h4 class="modal-subtitle" id="instructions-title">Instructions</h4>
+            <div id="modal-instructions" class="redeem-instructions"></div>
+            <button type="button" class="report-link" id="reportTrigger">
+                Expired or redeemed before? Report it
+            </button>
+        </div>
+    </div>
+    <!-- Report Modal -->
+    <div class="modal-backdrop" id="reportModal" role="dialog" aria-modal="true" aria-hidden="true"
+        aria-labelledby="report-modal-title" aria-describedby="report-instructions">
+        <div class="modal report-modal" role="document">
+            <button class="close-x" aria-label="Close" onclick="closeReportModal()">✕</button>
+            <h3 id="report-modal-title" style="margin:4px 0 4px 0">Report Code</h3>
+            <p id="report-instructions">Please select the code you want to report as expired or already redeemed.</p>
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="report-code">Select Code/s</label>
+                    <ul id="report-codes" name="report-codes" class="report-codes-list">
+                        <!-- Options injected dynamically -->
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <label for="report-reason">Reason</label>
+                    <div class="listbox" id="reportReasonBox" role="listbox" tabindex="0" aria-label="Report reason"
+                        data-value="">
+                        <button type="button" class="listbox-display" aria-haspopup="listbox"
+                            aria-expanded="false"><span>Select reason</span> <svg xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" viewBox="0 0 24 24">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" d="m19 9-7 6-7-6" />
+                            </svg></button>
+                        <ul class="listbox-options" role="presentation" hidden>
+                            <li id="reason-opt-expired" role="option" data-value="expired" aria-selected="false">Expired
+                            </li>
+                            <li id="reason-opt-redeemed" role="option" data-value="redeemed" aria-selected="false">
+                                Already Redeemed</li>
+                            <li id="reason-opt-other" role="option" data-value="other" aria-selected="false">Other</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="report-comments">Additional Comments (optional)</label>
+                    <textarea id="report-comments" name="report-comments" rows="4"
+                        placeholder="Provide any additional details here..."></textarea>
+                </div>
+                <p class="form-feedback" id="report-feedback" role="status" aria-live="polite"></p>
+                <div class="button-row">
+                    <button type="button" class="ghost-btn" onclick="closeReportModal()">Cancel</button>
+                    <button type="submit" class="small-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="games.js"></script>
+</body>
+
+</html>
