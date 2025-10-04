@@ -4,7 +4,8 @@ const games = [
     id: 1,
     title: "Borderlands 4",
     desc: "Chaotic looter shooter with open-world exploration and customizable bases.",
-    cover: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1285190/986a88d1b0e1420b00183def2a7034508353afa3/header.jpg?t=1758555255",
+    cover:
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1285190/986a88d1b0e1420b00183def2a7034508353afa3/header.jpg?t=1758555255",
     platform: "Multi",
     type: "In-game item",
   },
@@ -12,7 +13,8 @@ const games = [
     id: 2,
     title: "Star Wars Jedi Knight: Dark Forces II",
     desc: "First-person shooter with lightsaber combat and Force powers.",
-    cover: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/32380/header.jpg?t=1741814501",
+    cover:
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/32380/header.jpg?t=1741814501",
     platform: "PC",
     type: "Game",
   },
@@ -20,7 +22,8 @@ const games = [
     id: 3,
     title: "Venba",
     desc: "Narrative cooking game about family, culture, and memories.",
-    cover: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1491670/header.jpg?t=1753814411",
+    cover:
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1491670/header.jpg?t=1753814411",
     platform: "PC",
     type: "Game",
   },
@@ -52,7 +55,8 @@ const games = [
     id: 7,
     title: "Stellar Blade™",
     desc: "Action RPG with a focus on exploration and combat.",
-    cover: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/header.jpg?t=1751868063",
+    cover:
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/header.jpg?t=1751868063",
     platform: "PC & PlayStation",
     type: "In-game item",
   },
@@ -354,7 +358,7 @@ function applyFilters() {
   const q = searchEl.value.trim().toLowerCase();
   let list = games.filter((g) => g.title.toLowerCase().includes(q));
   if (platformValue !== "all")
-    list = list.filter((g) => g.platform === platformValue);
+    list = list.filter((g) => g.platform.includes(platformValue));
   if (typeValue !== "all") list = list.filter((g) => g.type === typeValue);
   // sort
   if (sortValue === "az")
