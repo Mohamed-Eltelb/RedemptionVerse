@@ -178,33 +178,60 @@ const games = [
 
 const codes = {
   1: [
-    "B9XB3-35JW9-3FHWW-RTJBT-SZBRH",
-    "B9XB3-WK6B5-9FZKK-XBTB3-RZ6B3",
-    "B9XBB-F35WK-K5F35-63T3T-XSTRJ",
-    "JH6BB-6RST3-5FB35-JT3BB-R3WCB",
-    "JZRTJ-SR9BB-W6T35-BJBTT-36FZR",
-    "BSFTB-TZ9BB-KRJBK-TTJB3-6S3KS",
+    { code: "B9XB3-35JW9-3FHWW-RTJBT-SZBRH", expired: false },
+    { code: "B9XB3-WK6B5-9FZKK-XBTB3-RZ6B3", expired: false },
+    { code: "B9XBB-F35WK-K5F35-63T3T-XSTRJ", expired: true },
+    { code: "JH6BB-6RST3-5FB35-JT3BB-R3WCB", expired: false },
+    { code: "JZRTJ-SR9BB-W6T35-BJBTT-36FZR", expired: false },
+    { code: "BSFTB-TZ9BB-KRJBK-TTJB3-6S3KS", expired: false },
   ],
-  2: ["KKP7996AA089915B45"],
-  3: ["B6H641E2979515BD7A"],
-  4: ["N3TB6-5RJWB-KZ9BT-36FTJ-RWBBK", "ZB9TR-6WBJ3-T35RK-9SZFT-3KBJW"],
-  5: ["RTB9K-J3W6B-9TFR3-ZB63K-WJ5TB"],
-  6: ["SZ3WB-9KTRJ-6F5BZ-TJB63-WRK9B", "BT93K-WRSZB-63TJ9-FKBJW-9BT35"],
-  7: ["JWBT9-36RKB-Z5F3T-9KBJW-RSTB6"],
-  8: ["TRK9B-5ZWJB-36FRS-9BTJW-6KB3T", "63BTJ-WR9KZ-3B5FT-KJ9WB-SR6BT"],
-  9: ["9TJWB-36KRB-ZBT5F-RJW9B-3SKT6"],
-  10: ["WBR63-KT9JB-5FRZS-9BTJW-36KBR", "SZ9BT-W63RJ-KB35T-JWB9K-TR63F"],
-  11: ["63JWB-9BTRK-Z5F3S-RJW6B-KBT9Z"],
-  12: ["TRJW9-63KB5-BZFTJ-9WBR3-KS6BT", "WZB63-9TJKB-5RSFW-KBT9J-J63WR"],
-  13: ["K9BRT-36JWZ-B5FT3-9SKBW-RJ6BT"],
-  14: ["JWBT9-63KRZ-5FB3T-9WBJR-SK6TB", "9T63J-WBRKZ-B5F9T-J36WB-SRKB9"],
-  15: ["6BTJW-9ZRKB-B35FT-RJ9WB-T63KS"],
-  16: ["63RJW-9BTKB-5ZSFR-J9B6T-WKB3T", "9BTJW-63ZKR-B5F3W-T9RSJ-6BWKB"],
-  17: ["RJ9BT-63KBW-5ZF3T-W9JBR-SK63T"],
-  18: ["KBT9J-63WBR-B5FTS-9ZKJW-R63BT", "9BWTR-63JKZ-B5F9R-WBT36-SRJKB"],
-  19: ["S9BTR-63JWZ-KB5FT-J9WRB-36KBT"],
-  20: ["WBT9J-63RKB-Z5F3S-J9BWK-T36RJ", "63BTR-9JWZK-B5FT9-R3KBW-SJ6BT"],
-  21: ["J9BTR-63KWB-5FRZS-9BTJW-36KRZ"],
+  2: [{ code: "KKP7996AA089915B45", expired: false }],
+  3: [{ code: "B6H641E2979515BD7A", expired: false }],
+  4: [
+    { code: "N3TB6-5RJWB-KZ9BT-36FTJ-RWBBK", expired: false },
+    { code: "ZB9TR-6WBJ3-T35RK-9SZFT-3KBJW", expired: false },
+  ],
+  5: [{ code: "RTB9K-J3W6B-9TFR3-ZB63K-WJ5TB", expired: false }],
+  6: [
+    { code: "SZ3WB-9KTRJ-6F5BZ-TJB63-WRK9B", expired: false },
+    { code: "BT93K-WRSZB-63TJ9-FKBJW-9BT35", expired: false },
+  ],
+  7: [{ code: "JWBT9-36RKB-Z5F3T-9KBJW-RSTB6", expired: false }],
+  8: [
+    { code: "TRK9B-5ZWJB-36FRS-9BTJW-6KB3T", expired: false },
+    { code: "63BTJ-WR9KZ-3B5FT-KJ9WB-SR6BT", expired: false },
+  ],
+  9: [{ code: "9TJWB-36KRB-ZBT5F-RJW9B-3SKT6", expired: false }],
+  10: [
+    { code: "WBR63-KT9JB-5FRZS-9BTJW-36KBR", expired: false },
+    { code: "SZ9BT-W63RJ-KB35T-JWB9K-TR63F", expired: false },
+  ],
+  11: [{ code: "63JWB-9BTRK-Z5F3S-RJW6B-KBT9Z", expired: false }],
+  12: [
+    { code: "TRJW9-63KB5-BZFTJ-9WBR3-KS6BT", expired: false },
+    { code: "WZB63-9TJKB-5RSFW-KBT9J-J63WR", expired: false },
+  ],
+  13: [{ code: "K9BRT-36JWZ-B5FT3-9SKBW-RJ6BT", expired: false }],
+  14: [
+    { code: "JWBT9-63KRZ-5FB3T-9WBJR-SK6TB", expired: false },
+    { code: "9T63J-WBRKZ-B5F9T-J36WB-SRKB9", expired: false },
+  ],
+  15: [{ code: "6BTJW-9ZRKB-B35FT-RJ9WB-T63KS", expired: false }],
+  16: [
+    { code: "63RJW-9BTKB-5ZSFR-J9B6T-WKB3T", expired: false },
+    { code: "9BTJW-63ZKR-B5F3W-T9RSJ-6BWKB", expired: false },
+  ],
+  17: [{ code: "RJ9BT-63KBW-5ZF3T-W9JBR-SK63T", expired: false }],
+  18: [
+    { code: "KBT9J-63WBR-B5FTS-9ZKJW-R63BT", expired: false },
+    { code: "9BWTR-63JKZ-B5F9R-WBT36-SRJKB", expired: false },
+  ],
+  19: [{ code: "S9BTR-63JWZ-KB5FT-J9WRB-36KBT", expired: false }],
+  20: [
+    { code: "WBT9J-63RKB-Z5F3S-J9BWK-T36RJ", expired: false },
+    { code: "63BTR-9JWZK-B5FT9-R3KBW-SJ6BT", expired: false },
+  ],
+  21: [{ code: "J9BTR-63KWB-5FRZS-9BTJW-36KRZ", expired: false }],
 };
 
 // redemption instructions keyed by platform or specific game id
@@ -238,19 +265,18 @@ const baseInstructions = {
     "Enter one code at a time from those listed above and confirm.",
     "Launch the game to verify unlocked content.",
   ],
+  gog: [
+    '<a href="https://www.gog.com/redeem" target="_blank" rel="noopener noreferrer">Click here</a> to be automatically redirected to the GOG redemption page.',
+    'On the GOG redemption page, paste a code then click <q>Continue</q> to redeem the unique game code by <time datetime="2025-09-10">September 10, 2025</time>.',
+    "If you are not signed in on GOG, sign in to your active GOG account or sign up to create one.",
+    "Start playing the game.",
+  ],
 };
-
-const gogInstructions = [
-  '<a href="https://www.gog.com/redeem" target="_blank" rel="noopener noreferrer">Click here</a> to be automatically redirected to the GOG redemption page.',
-  'On the GOG redemption page, paste a code then click <q>Continue</q> to redeem the unique game code by <time datetime="2025-09-10">September 10, 2025</time>.',
-  "If you are not signed in on GOG, sign in to your active GOG account or sign up to create one.",
-  "Start playing the game.",
-];
 
 const gamesInstructions = {
   1: {
     "Method 1": [
-      "Go to the SHiFT website: <a href=\"https://shift.gearboxsoftware.com/\" target=\"_blank\" rel=\"noopener noreferrer\">shift.gearboxsoftware.com</a>",
+      'Go to the SHiFT website: <a href="https://shift.gearboxsoftware.com/" target="_blank" rel="noopener noreferrer">shift.gearboxsoftware.com</a>',
       "Sign in or create a SHiFT account",
       "Link your gaming platform (Steam, Epic, Xbox, or PlayStation) at the <strong>Gaming Platforms page</strong>",
       "Open the <strong>Rewards page</strong> and Enter the SHiFT code in the 'Code Redemption' section",
@@ -265,26 +291,26 @@ const gamesInstructions = {
       "Check your in-game mail or inventory for the reward",
     ],
   },
-  2: { PC: gogInstructions },
-  3: { PC: gogInstructions },
-  4: { PC: gogInstructions },
-  5: { PC: gogInstructions },
-  6: { PC: gogInstructions },
-  7: { PC: gogInstructions },
-  8: { PC: gogInstructions },
-  9: { PC: gogInstructions },
-  10: { PC: gogInstructions },
-  11: { PC: gogInstructions },
-  12: { PC: gogInstructions },
-  13: { PC: gogInstructions },
-  14: { PC: gogInstructions },
-  15: { PC: gogInstructions },
-  16: { PC: gogInstructions },
-  17: { PC: gogInstructions },
-  18: { PC: gogInstructions },
-  19: { PC: gogInstructions },
-  20: { PC: gogInstructions },
-  21: { PC: gogInstructions },
+  2: { PC: baseInstructions.gog },
+  3: { PC: baseInstructions.gog },
+  4: { PC: baseInstructions.gog },
+  5: { PC: baseInstructions.gog },
+  6: { PC: baseInstructions.gog },
+  7: { PC: baseInstructions.gog },
+  8: { PC: baseInstructions.gog },
+  9: { PC: baseInstructions.gog },
+  10: { PC: baseInstructions.gog },
+  11: { PC: baseInstructions.gog },
+  12: { PC: baseInstructions.gog },
+  13: { PC: baseInstructions.gog },
+  14: { PC: baseInstructions.gog },
+  15: { PC: baseInstructions.gog },
+  16: { PC: baseInstructions.gog },
+  17: { PC: baseInstructions.gog },
+  18: { PC: baseInstructions.gog },
+  19: { PC: baseInstructions.gog },
+  20: { PC: baseInstructions.gog },
+  21: { PC: baseInstructions.gog },
 };
 
 const platformLogo = {
@@ -629,6 +655,7 @@ initListbox(typeBox, (val) => {
   render();
 });
 initListbox(instructionsPlatformListbox, (val) => {
+  if (activeInstructionsPlatformValue === val) return;
   activeInstructionsPlatformValue = val;
   renderInstructions();
 });
@@ -718,10 +745,12 @@ function openModal(id, title) {
   const list = codes[id] || [];
   codesWrapper.innerHTML = "";
   list.forEach((c, i) => {
+    const code = c.code;
     const row = document.createElement("div");
     row.className = "code-line";
+    if (c.expired == true) row.classList.add("expired");
     const codeText = document.createElement("code");
-    codeText.textContent = c;
+    codeText.textContent = code;
     codeText.className = "code-value";
     const btn = document.createElement("button");
     btn.type = "button";
@@ -731,7 +760,7 @@ function openModal(id, title) {
                                     <path fill="currentColor" d="M15.24 2h-3.894c-1.764 0-3.162 0-4.255.148c-1.126.152-2.037.472-2.755 1.193c-.719.721-1.038 1.636-1.189 2.766C3 7.205 3 8.608 3 10.379v5.838c0 1.508.92 2.8 2.227 3.342c-.067-.91-.067-2.185-.067-3.247v-5.01c0-1.281 0-2.386.118-3.27c.127-.948.413-1.856 1.147-2.593s1.639-1.024 2.583-1.152c.88-.118 1.98-.118 3.257-.118h3.07c1.276 0 2.374 0 3.255.118A3.6 3.6 0 0 0 15.24 2" />
                                     <path fill="currentColor" d="M6.6 11.397c0-2.726 0-4.089.844-4.936c.843-.847 2.2-.847 4.916-.847h2.88c2.715 0 4.073 0 4.917.847S21 8.671 21 11.397v4.82c0 2.726 0 4.089-.843 4.936c-.844.847-2.202.847-4.917.847h-2.88c-2.715 0-4.073 0-4.916-.847c-.844-.847-.844-2.21-.844-4.936z" />
                                 </svg>`;
-    btn.addEventListener("click", () => copyText(c, btn));
+    btn.addEventListener("click", () => copyText(code, btn));
     row.appendChild(codeText);
     row.appendChild(btn);
     codesWrapper.appendChild(row);
