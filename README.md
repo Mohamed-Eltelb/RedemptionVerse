@@ -2,8 +2,6 @@
 
 Discover and redeem codes for games and gaming services (Xbox Game Pass, PlayStation Plus, Steam / PC launchers, digital currency, bundles, and more). The project is a fast, static, front‑end experience focused on clarity, accessibility, and zero back‑end dependencies.
 
-> NOTE: The landing page currently links to `all-codes.html`, while the repository contains `games.html`. Either rename `games.html` to `all-codes.html` or update the link in `index.html` for consistency.
-
 ---
 ## Table of Contents
 - [Live Preview / Usage](#live-preview--usage)
@@ -41,7 +39,7 @@ No build step, bundler, or package manager is required.
 ---
 ## Features
 - Landing page with hero, "How It Works", platforms, latest drops, FAQ, final CTA.
-- Full library page (`games.html` / `all-codes.html`) with:
+- Full library page (`all-codes.html`) with:
   - Search (debounced input)
   - Custom ARIA listboxes (Sort, Platform, Type, Reason selector in report modal)
   - Pagination (adaptive ellipsis algorithm)
@@ -62,7 +60,7 @@ No build step, bundler, or package manager is required.
 ## Project Structure
 ```
 index.html          # Landing / marketing + 'Latest Drops'
-games.html          # (Full library page – may be renamed to all-codes.html)
+all-codes.html      # Full library page (search / filters / pagination)
 style.css           # Global design system + layout + shared components
 games.css           # Page-specific & modal/listbox/report enhancements
 games.js            # Data + rendering + filtering + modals + reporting logic
@@ -222,7 +220,6 @@ Add a `LICENSE` file to formalize usage rights.
 
 ---
 ## Quick Maintenance Checklist
-- [ ] Sync `index.html` link (`all-codes.html` vs `games.html`)
 - [ ] Prune expired codes
 - [ ] Add new game/service entries
 - [ ] Verify platform instructions correctness
