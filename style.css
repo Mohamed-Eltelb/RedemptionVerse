@@ -558,6 +558,9 @@ footer {
   .hero h2 {
     font-size: 26px;
   }
+  #modal-image img{
+    height: 150px !important;
+  }
 }
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
