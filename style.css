@@ -276,6 +276,12 @@ nav a.btn,
   color: var(--muted);
   font-size: 13px;
   line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 .card .meta {
   display: flex;
