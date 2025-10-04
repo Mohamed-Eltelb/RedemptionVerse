@@ -72,7 +72,7 @@ const games = [
     id: 9,
     title: "League of Legends Gift Card",
     desc: "A prepaid voucher you redeem in Riot’s store to get Riot Points (RP), which you can spend on in-game skins, champions, and cosmetics.",
-    cover: "assets/lol.webp",
+    cover: "assets/lol.png",
     platform: "PC",
     type: "In-game item",
   },
@@ -80,7 +80,7 @@ const games = [
     id: 10,
     title: "Overwatch Digital Code",
     desc: "A redeemable code that provides Overwatch Coins, used in Overwatch 2 to buy hero skins, bundles, Battle Passes, and other cosmetic items.",
-    cover: "assets/overwatch.png",
+    cover: "assets/overwatch.jpg",
     platform: "PC, Xbox, PlayStation, Switch",
     type: "In-game item",
   },
@@ -95,107 +95,84 @@ const games = [
   },
   {
     id: 12,
-    title: "Ghoul Harbor",
-    desc: "Side-scrolling mystery horror.",
-    cover: "https://picsum.photos/seed/ghoul/800/600",
-    platform: "PlayStation",
+    title: "Wolfenstein II: The New Colossus",
+    desc: "Wolfenstein II: The New Colossus puts you in BJ Blazkowicz’s fight to ignite the resistance and free America from Nazi control.",
+    cover:
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/612880/header.jpg?t=1750784115",
+    platform: "PC",
     type: "Game",
   },
   {
     id: 13,
-    title: "Runic Survivor",
-    desc: "Rogue-lite arena spell survival.",
-    cover: "https://picsum.photos/seed/runic/800/600",
-    platform: "Multi",
-    type: "Game",
+    title: "Fortnite V-Bucks Pack",
+    desc: "Redeem for bonus V-Bucks to spend on Battle Pass tiers, outfits, and cosmetic items.",
+    cover: "assets/fortnite.jpg",
+    platform: "PC, Xbox, PlayStation, Switch",
+    type: "In-game item",
   },
   {
     id: 14,
-    title: "EchoForge",
-    desc: "Automation factory world with echoes.",
-    cover: "https://picsum.photos/seed/forge/800/600",
-    platform: "PC",
-    type: "Game",
+    title: "Minecraft Minecoins",
+    desc: "Digital currency for the Minecraft Marketplace to purchase skins, worlds, and texture packs.",
+    cover: "assets/minecoins.png",
+    platform: "PC, Xbox, PlayStation, Switch",
+    type: "In-game item",
   },
   {
     id: 15,
-    title: "Skyward Realms",
-    desc: "Open-world floating island exploration.",
-    cover: "https://picsum.photos/seed/skyward/800/600",
-    platform: "Xbox",
-    type: "Game",
+    title: "PlayStation Plus",
+    desc: "Membership providing online multiplayer access, monthly games, and exclusive discounts.",
+    cover: "assets/psplus.jpg",
+    platform: "PlayStation",
+    type: "Service",
   },
   {
     id: 16,
-    title: "Tidal Clash",
-    desc: "Hero-based aquatic arena combat.",
-    cover: "https://picsum.photos/seed/tidal/800/600",
-    platform: "PC",
-    type: "Game",
+    title: "Nintendo Switch Online Membership",
+    desc: "Access online play, classic game libraries, and cloud save support.",
+    cover: "assets/switchonline.jpg",
+    platform: "Switch",
+    type: "Service",
   },
   {
     id: 17,
-    title: "Chrono Courier",
-    desc: "Deliver parcels across fractured timelines.",
-    cover: "https://picsum.photos/seed/chrono/800/600",
-    platform: "Switch",
-    type: "Game",
+    title: "Apex Legends Coin Pack",
+    desc: "Coins to unlock cosmetics, Apex Packs, and seasonal Battle Pass content.",
+    cover: "assets/apex.jpg",
+    platform: "PC, Xbox, PlayStation, Switch",
+    type: "In-game item",
   },
   {
     id: 18,
-    title: "Iron Frontier",
-    desc: "Mech warfare in a dynamic frontier.",
-    cover: "https://picsum.photos/seed/frontier/800/600",
-    platform: "Xbox",
-    type: "Game",
+    title: "Call of Duty CP Pack",
+    desc: "COD Points usable for Battle Pass tiers, operator bundles, and cosmetic blueprints.",
+    cover: "assets/codcp.jpg",
+    platform: "PC, Xbox, PlayStation",
+    type: "In-game item",
   },
   {
     id: 19,
-    title: "Luminous Depths",
-    desc: "Underwater survival & discovery.",
-    cover: "https://picsum.photos/seed/depths/800/600",
-    platform: "PC",
-    type: "Game",
+    title: "Genshin Impact Redeem Codes",
+    desc: "Time-limited codes granting Primogems, Mora, and enhancement materials.",
+    cover: "assets/genshin.jpg",
+    platform: "PC, Xbox, PlayStation, Phone",
+    type: "In-game item",
   },
   {
     id: 20,
-    title: "Runeblade Tactics",
-    desc: "Grid-based tactical spell combat.",
-    cover: "https://picsum.photos/seed/rune/800/600",
-    platform: "PC",
-    type: "Game",
+    title: "Diablo IV Platinum Pack",
+    desc: "Platinum currency to unlock Battle Pass tiers, cosmetics, and shop items.",
+    cover: "assets/diablo4.jpg",
+    platform: "PC, Xbox, PlayStation",
+    type: "In-game item",
   },
   {
     id: 21,
-    title: "Arc Circuit",
-    desc: "Precision platforming speed challenge.",
-    cover: "https://picsum.photos/seed/circuit/800/600",
-    platform: "Switch",
-    type: "Game",
-  },
-  {
-    id: 22,
-    title: "Void Harvester",
-    desc: "Resource extraction in collapsing sectors.",
-    cover: "https://picsum.photos/seed/void/800/600",
-    platform: "Multi",
-    type: "Game",
-  },
-  {
-    id: 23,
-    title: "Glacier Trail",
-    desc: "Expedition survival on dangerous ice.",
-    cover: "https://picsum.photos/seed/glacier/800/600",
-    platform: "PC",
-    type: "Game",
-  },
-  {
-    id: 24,
-    title: "Synthwave Duel",
-    desc: "Neon 1v1 rhythm-infused combat.",
-    cover: "https://picsum.photos/seed/synth/800/600",
-    platform: "Multi",
-    type: "Game",
+    title: "Rocket League Item Pack",
+    desc: "Claim bonus wheels, decals, and goal explosions for your garage.",
+    cover: "assets/rocketleague.jpg",
+    platform: "PC, Xbox, PlayStation, Switch",
+    type: "In-game item",
   },
 ];
 
@@ -289,16 +266,6 @@ const platformLogo = {
     '<svg xmlns="http://www.w3.org/2000/svg" title="Phone" viewBox="0 0 24 24"><path fill="currentColor" d="M2 14.5c0-1.405 0-2.107.337-2.611a2 2 0 0 1 .552-.552C3.393 11 4.096 11 5.5 11s2.107 0 2.611.337a2 2 0 0 1 .552.552C9 12.393 9 13.096 9 14.5v4c0 1.404 0 2.107-.337 2.611a2 2 0 0 1-.552.552C7.607 22 6.904 22 5.5 22s-2.107 0-2.611-.337a2 2 0 0 1-.552-.552C2 20.607 2 19.904 2 18.5z"/><path fill="currentColor" fill-rule="evenodd" d="M22 10v4c0 3.771 0 5.657-1.172 6.828S17.771 22 14 22c-1.7 0-3.015 0-4.056-.107c.335-.525.454-1.082.506-1.598c.05-.491.05-1.084.05-1.729v-4.132c0-.645 0-1.238-.05-1.729c-.054-.533-.18-1.11-.54-1.65a3.5 3.5 0 0 0-.966-.965c-.54-.36-1.116-.486-1.65-.54A14 14 0 0 0 6 9.5c.002-3.44.053-5.21 1.172-6.328C8.343 2 10.229 2 14 2s5.657 0 6.828 1.172S22 6.229 22 10m-10.75 9a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg>',
   Multi:
     '<svg xmlns="http://www.w3.org/2000/svg" title="Multiple Platforms" viewBox="0 0 24 24"><path fill="currentColor" d="M5.566 4.657A4.5 4.5 0 0 1 6.75 4.5h10.5q.616.002 1.183.157A3 3 0 0 0 15.75 3h-7.5a3 3 0 0 0-2.684 1.657M2.25 12a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3zm3-4.5q-.616.002-1.184.157A3 3 0 0 1 6.75 6h10.5a3 3 0 0 1 2.683 1.657A4.5 4.5 0 0 0 18.75 7.5z"/></svg>',
-  "PC, PlayStation":
-    '<svg xmlns="http://www.w3.org/2000/svg" title="PC" viewBox="0 0 24 24"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M21 13v7.434a1.5 1.5 0 0 1-1.553 1.499l-.133-.011L12 21.008V13zm-11 0v7.758l-5.248-.656A2 2 0 0 1 3 18.117V13zm9.314-10.922a1.5 1.5 0 0 1 1.68 1.355l.006.133V11h-9V2.992zM10 3.242V11H3V5.883a2 2 0 0 1 1.752-1.985z"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" title="PlayStation" viewBox="0 0 576 512"><path fill="currentColor" d="M570.9 372.3c-11.3 14.2-38.8 24.3-38.8 24.3L327 470.2v-54.3l150.9-53.8c17.1-6.1 19.8-14.8 5.8-19.4c-13.9-4.6-39.1-3.3-56.2 2.9L327 381.1v-56.4c23.2-7.8 47.1-13.6 75.7-16.8c40.9-4.5 90.9.6 130.2 15.5c44.2 14 49.2 34.7 38 48.9m-224.4-92.5v-139c0-16.3-3-31.3-18.3-35.6c-11.7-3.8-19 7.1-19 23.4v347.9l-93.8-29.8V32c39.9 7.4 98 24.9 129.2 35.4C424.1 94.7 451 128.7 451 205.2c0 74.5-46 102.8-104.5 74.6M43.2 410.2c-45.4-12.8-53-39.5-32.3-54.8c19.1-14.2 51.7-24.9 51.7-24.9l134.5-47.8v54.5l-96.8 34.6c-17.1 6.1-19.7 14.8-5.8 19.4s39.1 3.3 56.2-2.9l46.4-16.9v48.8c-51.6 9.3-101.4 7.3-153.9-10" /></svg>',
-  "Pc, Xbox":
-    '<svg xmlns="http://www.w3.org/2000/svg" title="PC" viewBox="0 0 24 24"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M21 13v7.434a1.5 1.5 0 0 1-1.553 1.499l-.133-.011L12 21.008V13zm-11 0v7.758l-5.248-.656A2 2 0 0 1 3 18.117V13zm9.314-10.922a1.5 1.5 0 0 1 1.68 1.355l.006.133V11h-9V2.992zM10 3.242V11H3V5.883a2 2 0 0 1 1.752-1.985z"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" title="Xbox" viewBox="0 0 512 512"><path fill="currentColor" d="M369.9 318.2c44.3 54.3 64.7 98.8 54.4 118.7c-7.9 15.1-56.7 44.6-92.6 55.9c-29.6 9.3-68.4 13.3-100.4 10.2c-38.2-3.7-76.9-17.4-110.1-39C93.3 445.8 87 438.3 87 423.4c0-29.9 32.9-82.3 89.2-142.1c32-33.9 76.5-73.7 81.4-72.6c9.4 2.1 84.3 75.1 112.3 109.5M188.6 143.8c-29.7-26.9-58.1-53.9-86.4-63.4c-15.2-5.1-16.3-4.8-28.7 8.1c-29.2 30.4-53.5 79.7-60.3 122.4c-5.4 34.2-6.1 43.8-4.2 60.5c5.6 50.5 17.3 85.4 40.5 120.9c9.5 14.6 12.1 17.3 9.3 9.9c-4.2-11-.3-37.5 9.5-64c14.3-39 53.9-112.9 120.3-194.4m311.6 63.5C483.3 127.3 432.7 77 425.6 77c-7.3 0-24.2 6.5-36 13.9c-23.3 14.5-41 31.4-64.3 52.8C367.7 197 427.5 283.1 448.2 346c6.8 20.7 9.7 41.1 7.4 52.3c-1.7 8.5-1.7 8.5 1.4 4.6c6.1-7.7 19.9-31.3 25.4-43.5c7.4-16.2 15-40.2 18.6-58.7c4.3-22.5 3.9-70.8-.8-93.4M141.3 43C189 40.5 251 77.5 255.6 78.4c.7.1 10.4-4.2 21.6-9.7c63.9-31.1 94-25.8 107.4-25.2c-63.9-39.3-152.7-50-233.9-11.7c-23.4 11.1-24 11.9-9.4 11.2"/></svg>',
-  "Xbox, PlayStation":
-    '<svg xmlns="http://www.w3.org/2000/svg" title="Xbox" viewBox="0 0 512 512"><path fill="currentColor" d="M369.9 318.2c44.3 54.3 64.7 98.8 54.4 118.7c-7.9 15.1-56.7 44.6-92.6 55.9c-29.6 9.3-68.4 13.3-100.4 10.2c-38.2-3.7-76.9-17.4-110.1-39C93.3 445.8 87 438.3 87 423.4c0-29.9 32.9-82.3 89.2-142.1c32-33.9 76.5-73.7 81.4-72.6c9.4 2.1 84.3 75.1 112.3 109.5M188.6 143.8c-29.7-26.9-58.1-53.9-86.4-63.4c-15.2-5.1-16.3-4.8-28.7 8.1c-29.2 30.4-53.5 79.7-60.3 122.4c-5.4 34.2-6.1 43.8-4.2 60.5c5.6 50.5 17.3 85.4 40.5 120.9c9.5 14.6 12.1 17.3 9.3 9.9c-4.2-11-.3-37.5 9.5-64c14.3-39 53.9-112.9 120.3-194.4m311.6 63.5C483.3 127.3 432.7 77 425.6 77c-7.3 0-24.2 6.5-36 13.9c-23.3 14.5-41 31.4-64.3 52.8C367.7 197 427.5 283.1 448.2 346c6.8 20.7 9.7 41.1 7.4 52.3c-1.7 8.5-1.7 8.5 1.4 4.6c6.1-7.7 19.9-31.3 25.4-43.5c7.4-16.2 15-40.2 18.6-58.7c4.3-22.5 3.9-70.8-.8-93.4M141.3 43C189 40.5 251 77.5 255.6 78.4c.7.1 10.4-4.2 21.6-9.7c63.9-31.1 94-25.8 107.4-25.2c-63.9-39.3-152.7-50-233.9-11.7c-23.4 11.1-24 11.9-9.4 11.2"/></svg><svg xmlns="http://www.w3.org/2000/svg" title="PlayStation" viewBox="0 0 576 512"><path fill="currentColor" d="M570.9 372.3c-11.3 14.2-38.8 24.3-38.8 24.3L327 470.2v-54.3l150.9-53.8c17.1-6.1 19.8-14.8 5.8-19.4c-13.9-4.6-39.1-3.3-56.2 2.9L327 381.1v-56.4c23.2-7.8 47.1-13.6 75.7-16.8c40.9-4.5 90.9.6 130.2 15.5c44.2 14 49.2 34.7 38 48.9m-224.4-92.5v-139c0-16.3-3-31.3-18.3-35.6c-11.7-3.8-19 7.1-19 23.4v347.9l-93.8-29.8V32c39.9 7.4 98 24.9 129.2 35.4C424.1 94.7 451 128.7 451 205.2c0 74.5-46 102.8-104.5 74.6M43.2 410.2c-45.4-12.8-53-39.5-32.3-54.8c19.1-14.2 51.7-24.9 51.7-24.9l134.5-47.8v54.5l-96.8 34.6c-17.1 6.1-19.7 14.8-5.8 19.4s39.1 3.3 56.2-2.9l46.4-16.9v48.8c-51.6 9.3-101.4 7.3-153.9-10" /></svg>',
-  "PC, Xbox, PlayStation":
-    '<svg xmlns="http://www.w3.org/2000/svg" title="PC" viewBox="0 0 24 24"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M21 13v7.434a1.5 1.5 0 0 1-1.553 1.499l-.133-.011L12 21.008V13zm-11 0v7.758l-5.248-.656A2 2 0 0 1 3 18.117V13zm9.314-10.922a1.5 1.5 0 0 1 1.68 1.355l.006.133V11h-9V2.992zM10 3.242V11H3V5.883a2 2 0 0 1 1.752-1.985z"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" title="Xbox" viewBox="0 0 512 512"><path fill="currentColor" d="M369.9 318.2c44.3 54.3 64.7 98.8 54.4 118.7c-7.9 15.1-56.7 44.6-92.6 55.9c-29.6 9.3-68.4 13.3-100.4 10.2c-38.2-3.7-76.9-17.4-110.1-39C93.3 445.8 87 438.3 87 423.4c0-29.9 32.9-82.3 89.2-142.1c32-33.9 76.5-73.7 81.4-72.6c9.4 2.1 84.3 75.1 112.3 109.5M188.6 143.8c-29.7-26.9-58.1-53.9-86.4-63.4c-15.2-5.1-16.3-4.8-28.7 8.1c-29.2 30.4-53.5 79.7-60.3 122.4c-5.4 34.2-6.1 43.8-4.2 60.5c5.6 50.5 17.3 85.4 40.5 120.9c9.5 14.6 12.1 17.3 9.3 9.9c-4.2-11-.3-37.5 9.5-64c14.3-39 53.9-112.9 120.3-194.4m311.6 63.5C483.3 127.3 432.7 77 425.6 77c-7.3 0-24.2 6.5-36 13.9c-23.3 14.5-41 31.4-64.3 52.8C367.7 197 427.5 283.1 448.2 346c6.8 20.7 9.7 41.1 7.4 52.3c-1.7 8.5-1.7 8.5 1.4 4.6c6.1-7.7 19.9-31.3 25.4-43.5c7.4-16.2 15-40.2 18.6-58.7c4.3-22.5 3.9-70.8-.8-93.4M141.3 43C189 40.5 251 77.5 255.6 78.4c.7.1 10.4-4.2 21.6-9.7c63.9-31.1 94-25.8 107.4-25.2c-63.9-39.3-152.7-50-233.9-11.7c-23.4 11.1-24 11.9-9.4 11.2"/></svg><svg xmlns="http://www.w3.org/2000/svg" title="PlayStation" viewBox="0 0 576 512"><path fill="currentColor" d="M570.9 372.3c-11.3 14.2-38.8 24.3-38.8 24.3L327 470.2v-54.3l150.9-53.8c17.1-6.1 19.8-14.8 5.8-19.4c-13.9-4.6-39.1-3.3-56.2 2.9L327 381.1v-56.4c23.2-7.8 47.1-13.6 75.7-16.8c40.9-4.5 90.9.6 130.2 15.5c44.2 14 49.2 34.7 38 48.9m-224.4-92.5v-139c0-16.3-3-31.3-18.3-35.6c-11.7-3.8-19 7.1-19 23.4v347.9l-93.8-29.8V32c39.9 7.4 98 24.9 129.2 35.4C424.1 94.7 451 128.7 451 205.2c0 74.5-46 102.8-104.5 74.6M43.2 410.2c-45.4-12.8-53-39.5-32.3-54.8c19.1-14.2 51.7-24.9 51.7-24.9l134.5-47.8v54.5l-96.8 34.6c-17.1 6.1-19.7 14.8-5.8 19.4s39.1 3.3 56.2-2.9l46.4-16.9v48.8c-51.6 9.3-101.4 7.3-153.9-10" /></svg>',
-  "PC, Xbox, PlayStation, Switch":
-    '<svg xmlns="http://www.w3.org/2000/svg" title="PC" viewBox="0 0 24 24"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M21 13v7.434a1.5 1.5 0 0 1-1.553 1.499l-.133-.011L12 21.008V13zm-11 0v7.758l-5.248-.656A2 2 0 0 1 3 18.117V13zm9.314-10.922a1.5 1.5 0 0 1 1.68 1.355l.006.133V11h-9V2.992zM10 3.242V11H3V5.883a2 2 0 0 1 1.752-1.985z"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" title="Xbox" viewBox="0 0 512 512"><path fill="currentColor" d="M369.9 318.2c44.3 54.3 64.7 98.8 54.4 118.7c-7.9 15.1-56.7 44.6-92.6 55.9c-29.6 9.3-68.4 13.3-100.4 10.2c-38.2-3.7-76.9-17.4-110.1-39C93.3 445.8 87 438.3 87 423.4c0-29.9 32.9-82.3 89.2-142.1c32-33.9 76.5-73.7 81.4-72.6c9.4 2.1 84.3 75.1 112.3 109.5M188.6 143.8c-29.7-26.9-58.1-53.9-86.4-63.4c-15.2-5.1-16.3-4.8-28.7 8.1c-29.2 30.4-53.5 79.7-60.3 122.4c-5.4 34.2-6.1 43.8-4.2 60.5c5.6 50.5 17.3 85.4 40.5 120.9c9.5 14.6 12.1 17.3 9.3 9.9c-4.2-11-.3-37.5 9.5-64c14.3-39 53.9-112.9 120.3-194.4m311.6 63.5C483.3 127.3 432.7 77 425.6 77c-7.3 0-24.2 6.5-36 13.9c-23.3 14.5-41 31.4-64.3 52.8C367.7 197 427.5 283.1 448.2 346c6.8 20.7 9.7 41.1 7.4 52.3c-1.7 8.5-1.7 8.5 1.4 4.6c6.1-7.7 19.9-31.3 25.4-43.5c7.4-16.2 15-40.2 18.6-58.7c4.3-22.5 3.9-70.8-.8-93.4M141.3 43C189 40.5 251 77.5 255.6 78.4c.7.1 10.4-4.2 21.6-9.7c63.9-31.1 94-25.8 107.4-25.2c-63.9-39.3-152.7-50-233.9-11.7c-23.4 11.1-24 11.9-9.4 11.2"/></svg><svg xmlns="http://www.w3.org/2000/svg" title="PlayStation" viewBox="0 0 576 512"><path fill="currentColor" d="M570.9 372.3c-11.3 14.2-38.8 24.3-38.8 24.3L327 470.2v-54.3l150.9-53.8c17.1-6.1 19.8-14.8 5.8-19.4c-13.9-4.6-39.1-3.3-56.2 2.9L327 381.1v-56.4c23.2-7.8 47.1-13.6 75.7-16.8c40.9-4.5 90.9.6 130.2 15.5c44.2 14 49.2 34.7 38 48.9m-224.4-92.5v-139c0-16.3-3-31.3-18.3-35.6c-11.7-3.8-19 7.1-19 23.4v347.9l-93.8-29.8V32c39.9 7.4 98 24.9 129.2 35.4C424.1 94.7 451 128.7 451 205.2c0 74.5-46 102.8-104.5 74.6M43.2 410.2c-45.4-12.8-53-39.5-32.3-54.8c19.1-14.2 51.7-24.9 51.7-24.9l134.5-47.8v54.5l-96.8 34.6c-17.1 6.1-19.7 14.8-5.8 19.4s39.1 3.3 56.2-2.9l46.4-16.9v48.8c-51.6 9.3-101.4 7.3-153.9-10" /></svg><svg xmlns="http://www.w3.org/2000/svg" title="Nintendo Switch" viewBox="0 0 16 16"><g fill="currentColor"><path d="M9.34 8.005c0-4.38.01-7.972.023-7.982C9.373.01 10.036 0 10.831 0c1.153 0 1.51.01 1.743.05c1.73.298 3.045 1.6 3.373 3.326c.046.242.053.809.053 4.61c0 4.06.005 4.537-.123 4.976c-.022.076-.048.15-.08.242a4.14 4.14 0 0 1-3.426 2.767c-.317.033-2.889.046-2.978.013c-.05-.02-.053-.752-.053-7.979m4.675.269a1.62 1.62 0 0 0-1.113-1.034a1.61 1.61 0 0 0-1.938 1.073a1.9 1.9 0 0 0-.014.935a1.63 1.63 0 0 0 1.952 1.107c.51-.136.908-.504 1.11-1.028c.11-.285.113-.742.003-1.053M3.71 3.317c-.208.04-.526.199-.695.348c-.348.301-.52.729-.494 1.232c.013.262.03.332.136.544c.155.321.39.556.712.715c.222.11.278.123.567.133c.261.01.354 0 .53-.06c.719-.242 1.153-.94 1.03-1.656c-.142-.852-.95-1.422-1.786-1.256"/><path d="M3.425.053a4.14 4.14 0 0 0-3.28 3.015C0 3.628-.01 3.956.005 8.3c.01 3.99.014 4.082.08 4.39c.368 1.66 1.548 2.844 3.224 3.235c.22.05.497.06 2.29.07c1.856.012 2.048.009 2.097-.04c.05-.05.053-.69.053-7.94c0-5.374-.01-7.906-.033-7.952c-.033-.06-.09-.063-2.03-.06c-1.578.004-2.052.014-2.26.05Zm3 14.665l-1.35-.016c-1.242-.013-1.375-.02-1.623-.083a2.81 2.81 0 0 1-2.08-2.167c-.074-.335-.074-8.579-.004-8.907a2.85 2.85 0 0 1 1.716-2.05c.438-.176.64-.196 2.058-.2l1.282-.003v13.426Z"/></g></svg>',
 };
 
 const typesIcons = {
@@ -468,9 +435,12 @@ function render(showBusy = false, keepFocus = false) {
             g.desc
           )}</p>
           <div class="meta">
-                        <span>${typesIcons[g.type]} | ${
-      platformLogo[g.platform]
-    }</span>
+                        <span>${typesIcons[g.type]} | ${g.platform
+      .split(", ")
+      .map((p) => {
+        return platformLogo[p];
+      })
+      .join("")}</span>
                         <button class="small-btn" data-game="${
                           g.id
                         }">Redeem</button>
