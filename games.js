@@ -340,7 +340,6 @@ const resetBtn = document.getElementById("resetBtn");
 const emptyState = document.getElementById("emptyState");
 const clearAllInline = document.getElementById("clearAllInline");
 const pagination = document.getElementById("pagination");
-const genreBox = document.getElementById("genreBox");
 const typeBox = document.getElementById("typeBox");
 const reportModal = document.getElementById("reportModal");
 const reportTrigger = document.getElementById("reportTrigger");
@@ -359,23 +358,6 @@ if (window.location.pathname.endsWith("index.html") || !pagination) {
 }
 let currentPage = 1;
 let activeGenre = null;
-
-const genres = [...new Set(games.map((g) => g.genre))].sort();
-// Inject genre options into genreBox listbox
-(function initGenreOptions() {
-  if (!genreBox) return;
-  const list = genreBox.querySelector(".listbox-options");
-  genres.forEach((g) => {
-    const li = document.createElement("li");
-    const id = "genre-opt-" + g.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-    li.id = id;
-    li.role = "option";
-    li.dataset.value = g;
-    li.setAttribute("aria-selected", "false");
-    li.textContent = g;
-    list.appendChild(li);
-  });
-})();
 
 function escapeHtml(s) {
   return String(s).replace(
@@ -398,7 +380,6 @@ function applyFilters() {
   if (platformValue !== "all")
     list = list.filter((g) => g.platform === platformValue);
   if (typeValue !== "all") list = list.filter((g) => g.type === typeValue);
-  if (activeGenre) list = list.filter((g) => g.genre === activeGenre);
   // sort
   if (sortValue === "az")
     list = list.slice().sort((a, b) => a.title.localeCompare(b.title));
@@ -464,7 +445,6 @@ function render(showBusy = false, keepFocus = false) {
   }
   const filtersActive = !!(
     searchEl?.value ||
-    activeGenre ||
     platformValue !== "all" ||
     sortValue !== "featured"
   );
@@ -535,11 +515,9 @@ resetBtn?.addEventListener("click", () => {
   searchEl.value = "";
   setListboxValue(sortBox, "featured");
   setListboxValue(platformBox, "all");
-  setListboxValue(genreBox, "all");
   setListboxValue(typeBox, "all");
   sortValue = "featured";
   platformValue = "all";
-  activeGenre = null;
   currentPage = 1;
   render();
 });
@@ -639,16 +617,10 @@ initListbox(typeBox, (val) => {
   currentPage = 1;
   render();
 });
-initListbox(genreBox, (val) => {
-  activeGenre = val === "all" ? null : val;
-  currentPage = 1;
-  render();
-});
 document.addEventListener("click", () => {
   toggleListbox(sortBox, false);
   toggleListbox(platformBox, false);
   toggleListbox(typeBox, false);
-  toggleListbox(genreBox, false);
   const rr = document.getElementById("reportReasonBox");
   if (rr) toggleListbox(rr, false);
 });
