@@ -225,6 +225,7 @@
   font-size: 14px;
   position: relative;
 }
+.code-line.expired { opacity: .55; }
 .code-value {
   letter-spacing: 1px;
   font-size: 15px;
@@ -338,10 +339,10 @@
   margin: 4px 0 0 0;
   padding: 4px;
   position: absolute;
-  /* left: 0; */
+  left: 0;
   right: 0;
   top: 100%;
-  width: max-content;
+
   min-width: 100px;
   background: rgba(10, 14, 25, 0.95);
   backdrop-filter: blur(8px);
@@ -351,6 +352,10 @@
   overflow: auto;
   z-index: 40;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+}
+.listbox-options.inst{
+    width: max-content;
+    left: unset;
 }
 .listbox-options li {
   display: flex;
@@ -441,13 +446,51 @@
   line-height: 1.5;
 }
 
+/* Modal meta (description + platforms) */
+.modal-meta {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 10px 12px 12px 12px;
+  border-radius: 12px;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.modal-desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-height: 72px; /* ~4 lines */
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.platform-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 11px;
+}
+.platform-badges .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  line-height: 1;
+}
+.platform-badges .badge svg { width:14px; height:14px; }
+
 #modal-image img {
   max-width: 100%;
   width: 100%;
-  border-radius: 12px;
-  margin-top: 12px;
-  border-radius: 10px;
-  height: 225px;
+  /* margin-top: 12px; */
+  /* border-radius: 10px; */
+  max-height: 250px;
   object-fit: cover;
   object-position: center;
 }
@@ -476,6 +519,7 @@
 
 .report-modal {
   max-width: 520px;
+  padding: 20px;
 }
 
 .report-modal form {
@@ -599,4 +643,44 @@
 
 .form-feedback.error {
   color: #f59e9e;
+}
+
+/* --- Modal Tabs (Codes / Instructions switch) --- */
+.modal-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.06);
+  padding: 4px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  position: relative;
+  backdrop-filter: blur(6px);
+}
+.modal-tab {
+  flex: 1 1 0;
+  position: relative;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  letter-spacing: .4px;
+  border-radius: 10px;
+  transition: color .35s ease;
+  z-index: 1; /* sit above highlight */
+}
+.modal-tab:hover { color: #fff; }
+.modal-tab:focus-visible { outline: 2px solid rgba(var(--accent2),0.65); outline-offset: 2px; }
+.modal-tab.active, .modal-tab[aria-selected="true"] { color: #fff; font-weight: 600; }
+/* Active pill highlight using ::before so text color transitions cleanly */
+.modal-tab.active::before, .modal-tab[aria-selected="true"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(var(--accent2),1), rgba(var(--accent1),1));
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(var(--accent2),0.25), 0 2px 6px rgba(0,0,0,0.5);
+  z-index: -1;
 }

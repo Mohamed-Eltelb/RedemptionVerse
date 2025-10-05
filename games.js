@@ -32,7 +32,7 @@ const games = [
     title: "Roblox Digital Card",
     desc: "A redeemable code that grants Robux, the in-game currency used to buy avatar items, game passes, and other premium content on Roblox.",
     cover: "assets/roblox.jpg",
-    platform: "PC, Xbox, PlayStation",
+    platform: "PC, Xbox, PlayStation, Phone",
     type: "In-game item",
   },
   {
@@ -57,7 +57,7 @@ const games = [
     desc: "An action-adventure where Eve battles mysterious creatures to reclaim Earth, combining fast combat with a cinematic sci-fi story.",
     cover:
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/header.jpg?t=1751868063",
-    platform: "PC, PlayStation",
+    platform: "PlayStation",
     type: "Game",
   },
   {
@@ -184,54 +184,64 @@ const codes = {
     { code: "JH6BB-6RST3-5FB35-JT3BB-R3WCB", expired: false },
     { code: "JZRTJ-SR9BB-W6T35-BJBTT-36FZR", expired: false },
     { code: "BSFTB-TZ9BB-KRJBK-TTJB3-6S3KS", expired: false },
+    0,
   ],
-  2: [{ code: "KKP7996AA089915B45", expired: false }],
-  3: [{ code: "B6H641E2979515BD7A", expired: false }],
+  2: [{ code: "KKP7996AA089915B45", expired: false }, 0],
+  3: [{ code: "B6H641E2979515BD7A", expired: false }, 0],
   4: [
     { code: "N3TB6-5RJWB-KZ9BT-36FTJ-RWBBK", expired: false },
     { code: "ZB9TR-6WBJ3-T35RK-9SZFT-3KBJW", expired: false },
+    0,
   ],
-  5: [{ code: "RTB9K-J3W6B-9TFR3-ZB63K-WJ5TB", expired: false }],
+  5: [{ code: "RTB9K-J3W6B-9TFR3-ZB63K-WJ5TB", expired: false }, 0],
   6: [
     { code: "SZ3WB-9KTRJ-6F5BZ-TJB63-WRK9B", expired: false },
     { code: "BT93K-WRSZB-63TJ9-FKBJW-9BT35", expired: false },
+    0,
   ],
-  7: [{ code: "JWBT9-36RKB-Z5F3T-9KBJW-RSTB6", expired: false }],
+  7: [{ code: "JWBT9-36RKB-Z5F3T-9KBJW-RSTB6", expired: false }, 0],
   8: [
     { code: "TRK9B-5ZWJB-36FRS-9BTJW-6KB3T", expired: false },
     { code: "63BTJ-WR9KZ-3B5FT-KJ9WB-SR6BT", expired: false },
+    0,
   ],
-  9: [{ code: "9TJWB-36KRB-ZBT5F-RJW9B-3SKT6", expired: false }],
+  9: [{ code: "9TJWB-36KRB-ZBT5F-RJW9B-3SKT6", expired: false }, 0],
   10: [
     { code: "WBR63-KT9JB-5FRZS-9BTJW-36KBR", expired: false },
     { code: "SZ9BT-W63RJ-KB35T-JWB9K-TR63F", expired: false },
+    0,
   ],
-  11: [{ code: "63JWB-9BTRK-Z5F3S-RJW6B-KBT9Z", expired: false }],
+  11: [{ code: "63JWB-9BTRK-Z5F3S-RJW6B-KBT9Z", expired: false }, 0],
   12: [
     { code: "TRJW9-63KB5-BZFTJ-9WBR3-KS6BT", expired: false },
     { code: "WZB63-9TJKB-5RSFW-KBT9J-J63WR", expired: false },
+    0,
   ],
-  13: [{ code: "K9BRT-36JWZ-B5FT3-9SKBW-RJ6BT", expired: false }],
+  13: [{ code: "K9BRT-36JWZ-B5FT3-9SKBW-RJ6BT", expired: false }, 0],
   14: [
     { code: "JWBT9-63KRZ-5FB3T-9WBJR-SK6TB", expired: false },
     { code: "9T63J-WBRKZ-B5F9T-J36WB-SRKB9", expired: false },
+    0,
   ],
-  15: [{ code: "6BTJW-9ZRKB-B35FT-RJ9WB-T63KS", expired: false }],
+  15: [{ code: "6BTJW-9ZRKB-B35FT-RJ9WB-T63KS", expired: false }, 0],
   16: [
     { code: "63RJW-9BTKB-5ZSFR-J9B6T-WKB3T", expired: false },
     { code: "9BTJW-63ZKR-B5F3W-T9RSJ-6BWKB", expired: false },
+    0,
   ],
-  17: [{ code: "RJ9BT-63KBW-5ZF3T-W9JBR-SK63T", expired: false }],
+  17: [{ code: "RJ9BT-63KBW-5ZF3T-W9JBR-SK63T", expired: false }, 0],
   18: [
     { code: "KBT9J-63WBR-B5FTS-9ZKJW-R63BT", expired: false },
     { code: "9BWTR-63JKZ-B5F9R-WBT36-SRJKB", expired: false },
+    0,
   ],
-  19: [{ code: "S9BTR-63JWZ-KB5FT-J9WRB-36KBT", expired: false }],
+  19: [{ code: "S9BTR-63JWZ-KB5FT-J9WRB-36KBT", expired: false }, 0],
   20: [
     { code: "WBT9J-63RKB-Z5F3S-J9BWK-T36RJ", expired: false },
     { code: "63BTR-9JWZK-B5FT9-R3KBW-SJ6BT", expired: false },
+    0,
   ],
-  21: [{ code: "J9BTR-63KWB-5FRZS-9BTJW-36KRZ", expired: false }],
+  21: [{ code: "J9BTR-63KWB-5FRZS-9BTJW-36KRZ", expired: false }, 0],
 };
 
 // redemption instructions keyed by platform or specific game id
@@ -243,21 +253,24 @@ const baseInstructions = {
     "Restart the client if the item does not appear immediately.",
   ],
   Xbox: [
-    "On your Xbox console press the Xbox button to open the guide.",
-    "Go to <em>Store &gt; Use a code</em>.",
-    "Enter (or paste if using the mobile app) the code exactly.",
-    "Complete redemption and check your Library / Ready to Install.",
+    "Turn on your <strong>Xbox console</strong> and sign in with your Microsoft account",
+    "Press the <strong>Xbox button</strong> on your controller to open the guide",
+    "Go to <strong>Store → Redeem</strong> or <strong>Profile & System → Settings → Account → Redeem Code</strong>",
+    "Enter your <strong>25-character code</strong> and confirm",
   ],
   PlayStation: [
-    "From the PlayStation Store select the three dots (More) &gt; <strong>Redeem Code</strong>.",
-    "Enter the 12‑character voucher code.",
-    "Confirm redemption then download from your library.",
+    "Turn on your <strong>PlayStation</strong> and sign in to your PlayStation Network account",
+    "Go to the <strong>PlayStation Store</strong> from the home screen",
+    "Scroll down and select <strong>Redeem Code</strong>",
+    "Enter your <strong>12-digit code</strong> exactly as shown",
+    "Confirm to redeem and the game will be added to your library and ready to download",
   ],
   Switch: [
-    "Open Nintendo eShop and ensure the correct user is active.",
-    "Select “Enter Code” from the left sidebar.",
-    "Enter the 16‑character code exactly and confirm.",
-    "Content will begin downloading automatically.",
+    "Turn on your <strong>Nintendo Switch</strong> and open the <strong>Nintendo eShop</strong>",
+    "Select the <strong>account</strong> you want to use",
+    "On the left side menu, scroll down and select <strong>Redeem Code</strong>",
+    "Enter your <strong>16-character download code</strong> (letters and numbers, no hyphens)",
+    "Confirm and the game or content will begin downloading automatically",
   ],
   Multi: [
     "Choose your platform’s store (Steam / Epic / GOG / Console) and locate the redeem / activate product option.",
@@ -271,11 +284,18 @@ const baseInstructions = {
     "If you are not signed in on GOG, sign in to your active GOG account or sign up to create one.",
     "Start playing the game.",
   ],
+  steam: [
+    "Open the <strong>Steam</strong> app on your PC and sign in to your account",
+    "Click on the top menu <strong>Games → Activate a Product on Steam</strong>",
+    "Click <strong>Next</strong>, then <strong>Agree</strong> to the Steam Subscriber Agreement",
+    "Enter your <strong>product code</strong> exactly as shown and click <strong>Next</strong>",
+    "Steam will verify and add the game to your <strong>Library</strong>; you can then download and install it",
+  ],
 };
 
 const gamesInstructions = {
   1: {
-    "Method 1": [
+    "Method 1 (Browser)": [
       'Go to the SHiFT website: <a href="https://shift.gearboxsoftware.com/" target="_blank" rel="noopener noreferrer">shift.gearboxsoftware.com</a>',
       "Sign in or create a SHiFT account",
       "Link your gaming platform (Steam, Epic, Xbox, or PlayStation) at the <strong>Gaming Platforms page</strong>",
@@ -283,7 +303,7 @@ const gamesInstructions = {
       "Choose your platform if asked and click Redeem",
       "Open Borderlands 4 and check your in-game mail or inventory for the reward",
     ],
-    "Method 2": [
+    "Method 2 (In-Game)": [
       "Open Borderlands 4",
       "Go to the Social or SHiFT tab in the main menu",
       "Select the Rewards or Redeem Code option",
@@ -293,13 +313,91 @@ const gamesInstructions = {
   },
   2: { PC: baseInstructions.gog },
   3: { PC: baseInstructions.gog },
-  4: { PC: baseInstructions.gog },
-  5: { PC: baseInstructions.gog },
-  6: { PC: baseInstructions.gog },
-  7: { PC: baseInstructions.gog },
-  8: { PC: baseInstructions.gog },
-  9: { PC: baseInstructions.gog },
-  10: { PC: baseInstructions.gog },
+  4: {
+    "All Platforms": [
+      "Go to <a href='https://www.roblox.com/redeem' target='_blank' rel='noopener noreferrer'>https://www.roblox.com/redeem</a>",
+      "Log in to your Roblox account",
+      "Enter the PIN from your Roblox Digital Card",
+      "Click Redeem",
+      "Go to the Roblox Store and use your credit or Robux balance",
+    ],
+  },
+  5: {
+    Phone: [
+      "Go to the official Free Fire redemption site: <a href='https://reward.ff.garena.com' target='_blank'><strong>https://reward.ff.garena.com</strong></a>",
+      "Log in with the same account you use in the game (<strong>Google</strong>, <strong>Facebook</strong>, <strong>VK</strong>, <strong>X</strong>, or <strong>Apple ID</strong>)",
+      "Enter your <strong>12-character redeem code</strong> (all uppercase, no spaces)",
+      "Click <strong>Confirm</strong> to redeem the code",
+      "Check your <strong>in-game mail</strong> for the reward — it will arrive within <strong>24 hours</strong>",
+    ],
+  },
+  6: {
+    Xbox: [
+      "Turn on your <strong>Xbox console</strong> and sign in with your Microsoft account",
+      "Press the <strong>Xbox button</strong> on your controller to open the guide",
+      "Go to <strong>Store → Redeem</strong> or <strong>Profile & System → Settings → Account → Redeem Code</strong>",
+      "Enter your <strong>25-character code</strong> and confirm",
+      "Your Game Pass Ultimate subscription will activate and be available on all linked devices",
+    ],
+    PC: [
+      "Go to <a href='https://redeem.microsoft.com' target='_blank'><strong>https://redeem.microsoft.com</strong></a> in your browser",
+      "Sign in with the same Microsoft account you use for Xbox Game Pass",
+      "Enter your <strong>25-character code</strong> and click <strong>Next</strong>",
+      "Confirm your redemption and the subscription will be added to your account",
+      "Open the <strong>Xbox app</strong> on your PC to access and install Game Pass games",
+    ],
+  },
+  7: {
+    PlayStation: baseInstructions.PlayStation,
+    Browser: [
+      "Visit <a href='https://store.playstation.com/redeem' target='_blank'><strong>https://store.playstation.com/redeem</strong></a>",
+      "Sign in with your PlayStation Network account",
+      "Enter your <strong>12-digit code</strong> and click <strong>Redeem</strong>",
+      "Once redeemed, you can download <strong>Stellar Blade</strong> from your PS5 library",
+    ],
+  },
+  8: {
+    "Nintendo eShop (Console)": baseInstructions.Switch,
+    Browser: [
+      "Go to <a href='https://ec.nintendo.com/redeem' target='_blank'><strong>https://ec.nintendo.com/redeem</strong></a>",
+      "Sign in with the same <strong>Nintendo Account</strong> linked to your Switch",
+      "Enter your <strong>16-character code</strong> and click <strong>Next</strong>",
+      "The game will be added to your account and can be downloaded from your Switch",
+    ],
+  },
+  9: {
+    PC: [
+      "Open the <strong>League of Legends</strong> client on your PC and log in",
+      "Click the <strong>Store</strong> icon (the stack of coins) at the top",
+      "Select <strong>Purchase RP</strong> from the left menu",
+      "Choose the option <strong>Prepaid Cards & Codes</strong>",
+      "Enter your <strong>PIN code</strong> from the gift card and click <strong>Submit</strong>",
+      "Your Riot Points (RP) will be added to your account immediately",
+    ],
+    Browser: [
+      "Go to <a href='https://redeem.riotgames.com' target='_blank'><strong>https://redeem.riotgames.com</strong></a>",
+      "Sign in with your <strong>Riot Games</strong> account",
+      "Select your region and enter the <strong>gift card code</strong>",
+      "Click <strong>Submit</strong> to redeem — RP will be credited to your account",
+    ],
+  },
+  10: {
+    Browser: [
+      "Go to <a href='https://www.battle.net/code' target='_blank'><strong>https://www.battle.net/code</strong></a>",
+      "Log in with your <strong>Battle.net account</strong>",
+      "Enter your <strong>Overwatch digital code</strong>",
+      "Click <strong>Redeem Code</strong>",
+      "Your <strong>Overwatch Coins</strong> will be added to your account instantly",
+    ],
+    "Battle.net App": [
+      "Open the <strong>Battle.net app</strong> on your PC and sign in",
+      "Click your <strong>profile name</strong> in the top-right corner",
+      "Select <strong>Redeem a Code</strong> from the dropdown menu",
+      "Enter your <strong>Overwatch code</strong> and click <strong>Redeem</strong>",
+      "Launch <strong>Overwatch 2</strong> to see your updated coin balance",
+    ],
+  },
+
   11: { PC: baseInstructions.gog },
   12: { PC: baseInstructions.gog },
   13: { PC: baseInstructions.gog },
@@ -460,7 +558,8 @@ function render(showBusy = false, keepFocus = false) {
   const filtersActive = !!(
     searchEl?.value ||
     platformValue !== "all" ||
-    sortValue !== "featured"
+    sortValue !== "featured" ||
+    typeValue !== "all"
   );
   if (resetBtn)
     resetBtn.style.display = filtersActive ? "inline-block" : "none";
@@ -552,6 +651,7 @@ resetBtn?.addEventListener("click", () => {
   setListboxValue(typeBox, "all");
   sortValue = "featured";
   platformValue = "all";
+  typeValue = "all";
   currentPage = 1;
   render();
 });
@@ -710,10 +810,32 @@ function sanitizeInstruction(html) {
 function openModal(id, title) {
   currentGameId = id;
   const game = games.find((g) => g.id === id);
-  document.getElementById("modal-title").textContent = `Redeem - ${title}`;
+  document.getElementById("modal-title").textContent = `${title}`;
   const img = modal.querySelector("#modal-image img");
   img.src = game.cover;
   img.alt = `${title} cover art`;
+  // Populate description and platform badges if elements exist
+  const descEl = document.getElementById("modal-desc");
+  if (descEl) {
+    descEl.textContent = game.desc || "";
+  }
+  const platsContainer = document.getElementById("modal-platforms");
+  if (platsContainer) {
+    platsContainer.innerHTML = "";
+    (game.platform || "")
+      .split(/,\s*/)
+      .filter(Boolean)
+      .forEach((p) => {
+        const span = document.createElement("span");
+        span.className = "badge";
+        if (platformLogo && platformLogo[p]) {
+          span.innerHTML = platformLogo[p] + `<span>${escapeHtml(p)}</span>`;
+        } else {
+          span.textContent = p;
+        }
+        platsContainer.appendChild(span);
+      });
+  }
   const instructionsPlatforms = Object.keys(gamesInstructions[currentGameId]);
   const platsList = modal.querySelector(".listbox-options");
   platsList.innerHTML = "";
@@ -734,21 +856,19 @@ function openModal(id, title) {
   );
   activeInstructionsPlatformValue =
     instructionsPlatformListbox.getAttribute("data-value");
-  // baseInstructions[game.platform] ||
-  // baseInstructions["Multi"];
-  const instr = gamesInstructions[id][activeInstructionsPlatformValue];
-  instructionsEl.innerHTML =
-    '<ol class="redeem-steps">' +
-    instr.map((line) => `<li>${sanitizeInstruction(line)}</li>`).join("") +
-    "</ol>";
+  // const instr = gamesInstructions[id][activeInstructionsPlatformValue];
+  renderInstructions();
   // build codes list
-  const list = codes[id] || [];
+  let list = codes[id] || [];
+  const allExpired = list.at(-1);
+  list = list.slice(0, -1);
+
   codesWrapper.innerHTML = "";
   list.forEach((c, i) => {
     const code = c.code;
     const row = document.createElement("div");
     row.className = "code-line";
-    if (c.expired == true) row.classList.add("expired");
+    if (c.expired == true || allExpired) row.classList.add("expired");
     const codeText = document.createElement("code");
     codeText.textContent = code;
     codeText.className = "code-value";
@@ -777,6 +897,19 @@ function openModal(id, title) {
   const firstCopy = codesWrapper.querySelector("button.copy-btn");
   (firstCopy || modal.querySelector(".close-x")).focus();
   document.body.style.overflow = "hidden";
+  // Reset tab state to Codes on open
+  const codesTab = document.getElementById("tab-codes");
+  const instrTab = document.getElementById("tab-instructions");
+  const codesPanel = document.getElementById("panel-codes");
+  const instrPanel = document.getElementById("panel-instructions");
+  if (codesTab && instrTab && codesPanel && instrPanel) {
+    codesTab.classList.add("active");
+    codesTab.setAttribute("aria-selected", "true");
+    instrTab.classList.remove("active");
+    instrTab.setAttribute("aria-selected", "false");
+    codesPanel.hidden = false;
+    instrPanel.hidden = true;
+  }
 }
 function closeModal() {
   if (reportModal && reportModal.style.display === "flex") {
@@ -984,6 +1117,41 @@ if (reportModal) {
 window.openModal = openModal;
 window.closeModal = closeModal;
 window.closeReportModal = closeReportModal;
+
+// --- Modal tab switching logic ---
+(function initModalTabs(){
+  const codesTab = document.getElementById("tab-codes");
+  const instrTab = document.getElementById("tab-instructions");
+  const codesPanel = document.getElementById("panel-codes");
+  const instrPanel = document.getElementById("panel-instructions");
+  if(!codesTab || !instrTab || !codesPanel || !instrPanel) return;
+  function activate(tab){
+    const isCodes = tab === codesTab;
+    codesTab.classList.toggle("active", isCodes);
+    instrTab.classList.toggle("active", !isCodes);
+    codesTab.setAttribute("aria-selected", String(isCodes));
+    instrTab.setAttribute("aria-selected", String(!isCodes));
+    codesPanel.hidden = !isCodes;
+    instrPanel.hidden = isCodes;
+    (isCodes ? codesPanel : instrPanel).setAttribute("tabindex","-1");
+    (isCodes ? codesPanel : instrPanel).focus({preventScroll:true});
+  }
+  codesTab.addEventListener('click', ()=>activate(codesTab));
+  instrTab.addEventListener('click', ()=>activate(instrTab));
+  // Arrow key navigation per WAI-ARIA Tabs pattern
+  [codesTab,instrTab].forEach(t=>{
+    t.addEventListener('keydown', e=>{
+      if(e.key==='ArrowRight' || e.key==='ArrowLeft'){
+        e.preventDefault();
+        const target = t===codesTab ? instrTab : codesTab;
+        target.focus();
+        activate(target);
+      }
+      if(e.key==='Home'){ e.preventDefault(); codesTab.focus(); activate(codesTab);} 
+      if(e.key==='End'){ e.preventDefault(); instrTab.focus(); activate(instrTab);} 
+    });
+  });
+})();
 
 document.getElementById("year").textContent = new Date().getFullYear();
 

@@ -481,7 +481,7 @@ footer {
   width: 100%;
   max-width: 520px;
   border-radius: 16px;
-  padding: 20px;
+  /* padding: 20px; */
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.02),
@@ -493,6 +493,11 @@ footer {
   position: relative;
   max-height: 100%;
   overflow: auto;
+}
+.redeem-card-content{
+  margin-top: 0;
+  padding: 20px;
+  padding-top: 0;
 }
 .modal .code {
   display: flex;
@@ -557,9 +562,6 @@ footer {
   }
   .hero h2 {
     font-size: 26px;
-  }
-  #modal-image img{
-    height: 150px !important;
   }
 }
 /* Chrome, Edge, Safari */
