@@ -937,8 +937,10 @@ function copyText(text, btn) {
 function populateReportCodes(gameId) {
   if (!reportCodesList) return false;
   reportCodesList.innerHTML = "";
-  const availableCodes = codes[gameId] || [];
-  if (!availableCodes.length) {
+  let availableCodes = codes[gameId] || [];
+  const allExpired = availableCodes.at(-1);
+  availableCodes = availableCodes.slice(0, -1);
+  if (!availableCodes.length || allExpired == true) {
     const item = document.createElement("li");
     item.textContent = "No codes available to report right now.";
     item.style.fontSize = "13px";
@@ -948,6 +950,8 @@ function populateReportCodes(gameId) {
     return false;
   }
   availableCodes.forEach((code, index) => {
+    if (code.expired == true) return; // don't allow reporting expired codes
+    code = code.code;
     const li = document.createElement("li");
     const input = document.createElement("input");
     input.type = "checkbox";
@@ -1119,13 +1123,13 @@ window.closeModal = closeModal;
 window.closeReportModal = closeReportModal;
 
 // --- Modal tab switching logic ---
-(function initModalTabs(){
+(function initModalTabs() {
   const codesTab = document.getElementById("tab-codes");
   const instrTab = document.getElementById("tab-instructions");
   const codesPanel = document.getElementById("panel-codes");
   const instrPanel = document.getElementById("panel-instructions");
-  if(!codesTab || !instrTab || !codesPanel || !instrPanel) return;
-  function activate(tab){
+  if (!codesTab || !instrTab || !codesPanel || !instrPanel) return;
+  function activate(tab) {
     const isCodes = tab === codesTab;
     codesTab.classList.toggle("active", isCodes);
     instrTab.classList.toggle("active", !isCodes);
@@ -1133,22 +1137,30 @@ window.closeReportModal = closeReportModal;
     instrTab.setAttribute("aria-selected", String(!isCodes));
     codesPanel.hidden = !isCodes;
     instrPanel.hidden = isCodes;
-    (isCodes ? codesPanel : instrPanel).setAttribute("tabindex","-1");
-    (isCodes ? codesPanel : instrPanel).focus({preventScroll:true});
+    (isCodes ? codesPanel : instrPanel).setAttribute("tabindex", "-1");
+    (isCodes ? codesPanel : instrPanel).focus({ preventScroll: true });
   }
-  codesTab.addEventListener('click', ()=>activate(codesTab));
-  instrTab.addEventListener('click', ()=>activate(instrTab));
+  codesTab.addEventListener("click", () => activate(codesTab));
+  instrTab.addEventListener("click", () => activate(instrTab));
   // Arrow key navigation per WAI-ARIA Tabs pattern
-  [codesTab,instrTab].forEach(t=>{
-    t.addEventListener('keydown', e=>{
-      if(e.key==='ArrowRight' || e.key==='ArrowLeft'){
+  [codesTab, instrTab].forEach((t) => {
+    t.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
         e.preventDefault();
-        const target = t===codesTab ? instrTab : codesTab;
+        const target = t === codesTab ? instrTab : codesTab;
         target.focus();
         activate(target);
       }
-      if(e.key==='Home'){ e.preventDefault(); codesTab.focus(); activate(codesTab);} 
-      if(e.key==='End'){ e.preventDefault(); instrTab.focus(); activate(instrTab);} 
+      if (e.key === "Home") {
+        e.preventDefault();
+        codesTab.focus();
+        activate(codesTab);
+      }
+      if (e.key === "End") {
+        e.preventDefault();
+        instrTab.focus();
+        activate(instrTab);
+      }
     });
   });
 })();
