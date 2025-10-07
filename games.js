@@ -194,12 +194,12 @@ const codes = {
     { code: "BSFTB-TZ9BB-KRJBK-TTJB3-6S3KS", expired: false },
     0,
   ],
-  2: [{ code: "KKP7996AA089915B45", expired: false }, 0],
+  2: [{ code: "KKP7996AA089915B45", expired: true }, 0],
   3: [{ code: "B6H641E2979515BD7A", expired: false }, 0],
   4: [
     { code: "N3TB6-5RJWB-KZ9BT-36FTJ-RWBBK", expired: false },
     { code: "ZB9TR-6WBJ3-T35RK-9SZFT-3KBJW", expired: false },
-    0,
+    1,
   ],
   5: [{ code: "RTB9K-J3W6B-9TFR3-ZB63K-WJ5TB", expired: false }, 0],
   6: [
@@ -588,6 +588,9 @@ function render(showBusy = false, keepFocus = false) {
   }
 
   subset.forEach((g) => {
+    let gameCodes = codes[g.id];
+    let expired =
+      gameCodes?.at(-1) || gameCodes.slice(0, -1).every((c) => c.expired);
     const card = document.createElement("article");
     card.className = "card";
     card.innerHTML = `
@@ -610,8 +613,8 @@ function render(showBusy = false, keepFocus = false) {
                         <button 
   class="small-btn" 
   data-game="${g.id}" 
-  ${codes[g.id]?.at(-1) ? "disabled" : ""}>
-  ${codes[g.id]?.at(-1) ? "Expired" : "Redeem"}
+  ${expired ? "disabled" : ""}>
+  ${expired ? "Expired" : "Redeem"}
 </button>
 
           </div>`;
@@ -875,8 +878,11 @@ function openModal(id, title) {
   renderInstructions();
   // build codes list
   let list = codes[id] || [];
-  const allExpired = list.at(-1);
+  let allExpired = list.at(-1);
   list = list.slice(0, -1);
+  if (!allExpired) {
+    allExpired = list.every((c) => c.expired);
+  }
 
   codesWrapper.innerHTML = "";
   list.forEach((c, i) => {
@@ -988,8 +994,11 @@ function populateReportCodes(gameId) {
   if (!reportCodesList) return false;
   reportCodesList.innerHTML = "";
   let availableCodes = codes[gameId] || [];
-  const allExpired = availableCodes.at(-1);
+  let allExpired = availableCodes.at(-1);
   availableCodes = availableCodes.slice(0, -1);
+    if (!allExpired) {
+    allExpired = availableCodes.every((c) => c.expired);
+  }
   if (!availableCodes.length || allExpired == true) {
     const item = document.createElement("li");
     item.textContent = "No codes available to report right now.";
