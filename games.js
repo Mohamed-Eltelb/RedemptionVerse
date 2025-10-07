@@ -174,6 +174,14 @@ const games = [
     platform: "PC, Xbox, PlayStation, Switch",
     type: "In-game item",
   },
+  {
+    id: 22,
+    title: "Windows 11 Pro Product Key",
+    desc: "A 25-character alphanumeric code that activates Windows 11 Pro, unlocking advanced features for business and professional use.",
+    cover: "assets/windows11.jpg",
+    platform: "PC",
+    type: "Service",
+  },
 ];
 
 const codes = {
@@ -242,6 +250,7 @@ const codes = {
     0,
   ],
   21: [{ code: "J9BTR-63KWB-5FRZS-9BTJW-36KRZ", expired: false }, 0],
+  22: [{ code: "VK7JG-NPHTM-C97JM-9MPGT-3V66T", expired: false }, 0],
 };
 
 // redemption instructions keyed by platform or specific game id
@@ -409,6 +418,7 @@ const gamesInstructions = {
   19: { PC: baseInstructions.gog },
   20: { PC: baseInstructions.gog },
   21: { PC: baseInstructions.gog },
+  22: { PC: baseInstructions.gog },
 };
 
 const platformLogo = {
@@ -462,6 +472,7 @@ if (window.location.pathname.endsWith("index.html") || !pagination) {
   PAGE_SIZE = 6;
 }
 let currentPage = 1;
+let hideExpired = false;
 let activeInstructionsPlatformValue = "none";
 function escapeHtml(s) {
   return String(s).replace(
@@ -596,9 +607,13 @@ function render(showBusy = false, keepFocus = false) {
         return platformLogo[p];
       })
       .join("")}</span>
-                        <button class="small-btn" data-game="${
-                          g.id
-                        }">Redeem</button>
+                        <button 
+  class="small-btn" 
+  data-game="${g.id}" 
+  ${codes[g.id]?.at(-1) ? "disabled" : ""}>
+  ${codes[g.id]?.at(-1) ? "Expired" : "Redeem"}
+</button>
+
           </div>`;
     grid.appendChild(card);
   });
@@ -866,27 +881,39 @@ function openModal(id, title) {
   codesWrapper.innerHTML = "";
   list.forEach((c, i) => {
     const code = c.code;
+    if ((c.expired == true || allExpired) && hideExpired) return;
     const row = document.createElement("div");
     row.className = "code-line";
     if (c.expired == true || allExpired) row.classList.add("expired");
+
     const codeText = document.createElement("code");
     codeText.textContent = code;
     codeText.className = "code-value";
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "copy-icon-btn";
-    btn.setAttribute("aria-label", "Copy code");
-    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+    const codeActions = document.createElement("div");
+    codeActions.classList = "code-actions";
+    const copyBtn = document.createElement("button");
+    copyBtn.type = "button";
+    copyBtn.className = "copy-icon-btn";
+    copyBtn.setAttribute("aria-label", "Copy code");
+    copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M15.24 2h-3.894c-1.764 0-3.162 0-4.255.148c-1.126.152-2.037.472-2.755 1.193c-.719.721-1.038 1.636-1.189 2.766C3 7.205 3 8.608 3 10.379v5.838c0 1.508.92 2.8 2.227 3.342c-.067-.91-.067-2.185-.067-3.247v-5.01c0-1.281 0-2.386.118-3.27c.127-.948.413-1.856 1.147-2.593s1.639-1.024 2.583-1.152c.88-.118 1.98-.118 3.257-.118h3.07c1.276 0 2.374 0 3.255.118A3.6 3.6 0 0 0 15.24 2" />
                                     <path fill="currentColor" d="M6.6 11.397c0-2.726 0-4.089.844-4.936c.843-.847 2.2-.847 4.916-.847h2.88c2.715 0 4.073 0 4.917.847S21 8.671 21 11.397v4.82c0 2.726 0 4.089-.843 4.936c-.844.847-2.202.847-4.917.847h-2.88c-2.715 0-4.073 0-4.916-.847c-.844-.847-.844-2.21-.844-4.936z" />
                                 </svg>`;
-    btn.addEventListener("click", () => copyText(code, btn));
+    copyBtn.addEventListener("click", () => copyText(code, copyBtn));
+    const reportBtn = document.createElement("button");
+    reportBtn.className = "code-report-btn";
+    reportBtn.setAttribute("aria-label", "button");
+    reportBtn.title = "Report this code as expired or invalid";
+    reportBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3 10.417c0-3.198 0-4.797.378-5.335c.377-.537 1.88-1.052 4.887-2.081l.573-.196C10.405 2.268 11.188 2 12 2s1.595.268 3.162.805l.573.196c3.007 1.029 4.51 1.544 4.887 2.081C21 5.62 21 7.22 21 10.417v1.574c0 5.638-4.239 8.375-6.899 9.536C13.38 21.842 13.02 22 12 22s-1.38-.158-2.101-.473C7.239 20.365 3 17.63 3 11.991zm9-3.167a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V8a.75.75 0 0 1 .75-.75M12 16a1 1 0 1 0 0-2a1 1 0 0 0 0 2" clip-rule="evenodd"/></svg>`;
+    reportBtn.addEventListener("click", () => reportCode(code, id, reportBtn));
     row.appendChild(codeText);
-    row.appendChild(btn);
+    codeActions.appendChild(reportBtn);
+    codeActions.appendChild(copyBtn);
+    row.appendChild(codeActions);
     codesWrapper.appendChild(row);
   });
   // If no codes, show message
-  if (!list.length) {
+  if (!list.length || codesWrapper.innerHTML === "") {
     codesWrapper.innerHTML =
       '<div style="padding:12px; background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.1); border-radius:10px; font-size:13px; color:var(--muted)">No codes available.</div>';
   }
@@ -922,16 +949,39 @@ function closeModal() {
   document.body.style.overflow = "auto";
 }
 function copyText(text, btn) {
+  const newIcon =
+    '<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+  if (
+    btn.classList.contains("copied") ||
+    btn.innerHTML === newIcon ||
+    btn.disabled
+  )
+    return; // prevent spamming
   navigator.clipboard?.writeText(text).then(() => {
     btn.classList.add("copied");
     const prev = btn.innerHTML;
-    btn.innerHTML =
-      '<svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+    btn.innerHTML = newIcon;
+    btn.disabled = true;
     setTimeout(() => {
       btn.classList.remove("copied");
       btn.innerHTML = prev;
+      btn.disabled = false;
     }, 1400);
   });
+}
+
+function reportCode(code, gameId, btn) {
+  const newIcon =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.378 5.082C3 5.62 3 7.22 3 10.417v1.574c0 5.638 4.239 8.375 6.899 9.536c.721.315 1.082.473 2.101.473c1.02 0 1.38-.158 2.101-.473C16.761 20.365 21 17.63 21 11.991v-1.574c0-3.198 0-4.797-.378-5.335c-.377-.537-1.88-1.052-4.887-2.081l-.573-.196C13.595 2.268 12.812 2 12 2s-1.595.268-3.162.805L8.265 3c-3.007 1.03-4.51 1.545-4.887 2.082M15.06 10.5a.75.75 0 0 0-1.12-.999l-3.011 3.374l-.87-.974a.75.75 0 0 0-1.118 1l1.428 1.6a.75.75 0 0 0 1.119 0z" clip-rule="evenodd"/></svg>';
+  if (btn.innerHTML === newIcon || btn.disabled) return; // prevent spamming
+  console.log("Report code clicked", code);
+  const prev = btn.innerHTML;
+  btn.innerHTML = newIcon;
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = prev;
+    btn.disabled = false;
+  }, 1400);
 }
 
 function populateReportCodes(gameId) {

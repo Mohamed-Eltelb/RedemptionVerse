@@ -12,6 +12,7 @@
   --glass-border: rgba(255, 255, 255, 0.06);
   --radius: 14px;
   --glass-blur: 10px;
+  color-scheme: dark;
 }
 * {
   box-sizing: border-box;
@@ -101,7 +102,6 @@ header {
   backdrop-filter: blur(6px);
 }
 .title {
-  
 }
 .title h1 {
   margin: 0;
@@ -189,13 +189,17 @@ nav a.btn,
   gap: 12px;
   align-items: center;
 }
+button {
+  font-family: inherit;
+}
 .btn-cta {
   padding: 10px 14px;
   border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
   border: none;
-  color: #080812;
+  /* color: #080812; */
+
   background: linear-gradient(
     90deg,
     rgba(var(--accent2), 1),
@@ -339,7 +343,7 @@ footer {
 .final-cta {
   display: grid;
   align-items: center;
-      justify-items: center;
+  justify-items: center;
   margin: 30px 0 10px 0;
   text-align: center;
 }
@@ -494,7 +498,7 @@ footer {
   max-height: 100%;
   overflow: auto;
 }
-.redeem-card-content{
+.redeem-card-content {
   margin-top: 0;
   padding: 20px;
   padding-top: 0;
@@ -528,10 +532,31 @@ footer {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: transparent;
-  border: 0;
-  color: var(--muted);
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.close-x:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.close-x:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* responsiveness */
@@ -563,6 +588,9 @@ footer {
   .hero h2 {
     font-size: 26px;
   }
+  .listbox {
+    max-width: unset !important;
+  }
 }
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
@@ -591,4 +619,81 @@ footer {
 * {
   scrollbar-width: thin;
   scrollbar-color: #444 rgba(20, 20, 20, 0.6);
+}
+
+.report-btn {
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    var(--glass-bg)
+  );
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  color: #e6eef8; /* icon color */
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  z-index: 10;
+}
+.report-btn:focus {
+  outline: 2px solid rgba(99, 102, 241, 0.24);
+  outline-offset: 3px;
+}
+.report-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7), 0 0 20px rgba(99, 102, 241, 0.04);
+}
+.report-btn svg {
+  display: block;
+}
+
+.code-actions {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  /* display: grid; */
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  transition: all 0.25s ease;
+}
+.code-report-btn {
+  opacity: 0;
+  display: flex;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.code-line:hover .code-report-btn {
+  opacity: 1;
+}
+
+.code-line:hover .code-actions {
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  /* padding: 6px 4px; */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+}
+
+button:disabled {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
 }
