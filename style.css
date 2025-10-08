@@ -494,8 +494,8 @@ footer {
   ); */
   background: linear-gradient(
     180deg,
-    rgb(255 255 255 / 10%),
-    rgb(255 255 255 / 10%)
+    rgb(255 255 255 / 7%),
+    rgb(255 255 255 / 7%)
   );
   border: 1px solid rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);

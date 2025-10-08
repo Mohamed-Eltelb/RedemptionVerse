@@ -193,14 +193,14 @@ const codes = {
     { code: "JH6BB-6RST3-5FB35-JT3BB-R3WCB", expired: false },
     { code: "JZRTJ-SR9BB-W6T35-BJBTT-36FZR", expired: false },
     { code: "BSFTB-TZ9BB-KRJBK-TTJB3-6S3KS", expired: false },
-    1,
+    0,
   ],
   2: [{ code: "KKP7996AA089915B45", expired: false }, 0],
   3: [{ code: "B6H641E2979515BD7A", expired: false }, 0],
   4: [
     { code: "N3TB6-5RJWB-KZ9BT-36FTJ-RWBBK", expired: false },
     { code: "ZB9TR-6WBJ3-T35RK-9SZFT-3KBJW", expired: false },
-    1,
+    0,
   ],
   5: [{ code: "RTB9K-J3W6B-9TFR3-ZB63K-WJ5TB", expired: false }, 0],
   6: [
