@@ -697,3 +697,29 @@ button:disabled {
   box-shadow: none;
   opacity: 0.6;
 }
+
+
+.limited {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 77, 77, 0.12);
+  border: 1px solid rgba(255, 77, 77, 0.4);
+  color: #ff4d4d;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  padding: 6px 12px;
+  border-radius: 30px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+  transition: all 0.3s ease;
+}
+
+.limited svg {
+  width: 16px;
+  height: 16px;
+}

@@ -42,6 +42,7 @@ const games = [
     cover: "assets/freefire.jpg",
     platform: "Phone",
     type: "In-game item",
+    limited: true
   },
   {
     id: 6,
@@ -194,7 +195,7 @@ const codes = {
     { code: "BSFTB-TZ9BB-KRJBK-TTJB3-6S3KS", expired: false },
     0,
   ],
-  2: [{ code: "KKP7996AA089915B45", expired: true }, 0],
+  2: [{ code: "KKP7996AA089915B45", expired: false }, 0],
   3: [{ code: "B6H641E2979515BD7A", expired: false }, 0],
   4: [
     { code: "N3TB6-5RJWB-KZ9BT-36FTJ-RWBBK", expired: false },
@@ -448,9 +449,7 @@ const resultsMeta = document.getElementById("resultsMeta");
 const searchEl = document.getElementById("search");
 const sortBox = document.getElementById("sortBox");
 const platformBox = document.getElementById("platformBox");
-const instructionsPlatformListbox = document.getElementById(
-  "instructionsPlatformListbox"
-);
+const instructionsListbox = document.getElementById("instructionsListbox");
 const resetBtn = document.getElementById("resetBtn");
 const emptyState = document.getElementById("emptyState");
 const clearAllInline = document.getElementById("clearAllInline");
@@ -473,7 +472,7 @@ if (window.location.pathname.endsWith("index.html") || !pagination) {
 }
 let currentPage = 1;
 let hideExpired = false;
-let activeInstructionsPlatformValue = "none";
+
 function escapeHtml(s) {
   return String(s).replace(
     /[&<>"']/g,
@@ -487,8 +486,7 @@ function escapeHtml(s) {
 let sortValue = sortBox?.getAttribute("data-value");
 let platformValue = platformBox?.getAttribute("data-value");
 let typeValue = typeBox?.getAttribute("data-value");
-// let instructionsPlatformListboxValue =
-//   instructionsPlatformListbox?.getAttribute("data-value");
+let activeInstructionsValue = instructionsListbox?.getAttribute("data-value");
 
 function applyFilters() {
   if (!searchEl) return games;
@@ -594,6 +592,11 @@ function render(showBusy = false, keepFocus = false) {
     const card = document.createElement("article");
     card.className = "card";
     card.innerHTML = `
+    ${
+      g.limited
+        ? `<div class="limited"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></svg>Limited</div>`
+        : ""
+    }
           <div class="cover" style="background-image:url('${
             g.cover
           }')" role="img" aria-label="${escapeHtml(g.title)} cover art"></div>
@@ -642,7 +645,7 @@ function renderInstructions() {
   const instructions = gamesInstructions[currentGameId];
   if (!instructions) return;
 
-  const platformInstructions = instructions[activeInstructionsPlatformValue];
+  const platformInstructions = instructions[activeInstructionsValue];
   if (!platformInstructions) return;
   instructionsEl.innerHTML =
     '<ol class="redeem-steps">' +
@@ -772,16 +775,16 @@ initListbox(typeBox, (val) => {
   currentPage = 1;
   render();
 });
-initListbox(instructionsPlatformListbox, (val) => {
-  if (activeInstructionsPlatformValue === val) return;
-  activeInstructionsPlatformValue = val;
+initListbox(instructionsListbox, (val) => {
+  if (activeInstructionsValue === val) return;
+  activeInstructionsValue = val;
   renderInstructions();
 });
 document.addEventListener("click", () => {
   toggleListbox(sortBox, false);
   toggleListbox(platformBox, false);
   toggleListbox(typeBox, false);
-  toggleListbox(instructionsPlatformListbox, false);
+  toggleListbox(instructionsListbox, false);
   const rr = document.getElementById("reportReasonBox");
   if (rr) toggleListbox(rr, false);
 });
@@ -869,12 +872,11 @@ function openModal(id, title) {
   });
 
   setListboxValue(
-    instructionsPlatformListbox,
+    instructionsListbox,
     platsList.firstChild.dataset.value || "none"
   );
-  activeInstructionsPlatformValue =
-    instructionsPlatformListbox.getAttribute("data-value");
-  // const instr = gamesInstructions[id][activeInstructionsPlatformValue];
+  activeInstructionsValue = instructionsListbox.getAttribute("data-value");
+  // const instr = gamesInstructions[id][activeInstructionsValue];
   renderInstructions();
   // build codes list
   let list = codes[id] || [];
@@ -996,7 +998,7 @@ function populateReportCodes(gameId) {
   let availableCodes = codes[gameId] || [];
   let allExpired = availableCodes.at(-1);
   availableCodes = availableCodes.slice(0, -1);
-    if (!allExpired) {
+  if (!allExpired) {
     allExpired = availableCodes.every((c) => c.expired);
   }
   if (!availableCodes.length || allExpired == true) {
