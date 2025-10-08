@@ -193,7 +193,7 @@ const codes = {
     { code: "JH6BB-6RST3-5FB35-JT3BB-R3WCB", expired: false },
     { code: "JZRTJ-SR9BB-W6T35-BJBTT-36FZR", expired: false },
     { code: "BSFTB-TZ9BB-KRJBK-TTJB3-6S3KS", expired: false },
-    0,
+    1,
   ],
   2: [{ code: "KKP7996AA089915B45", expired: false }, 0],
   3: [{ code: "B6H641E2979515BD7A", expired: false }, 0],
@@ -471,7 +471,8 @@ if (window.location.pathname.endsWith("index.html") || !pagination) {
   PAGE_SIZE = 6;
 }
 let currentPage = 1;
-let hideExpired = false;
+let hideExpiredCodes = false;
+let hideExpiredGames = false;
 
 function escapeHtml(s) {
   return String(s).replace(
@@ -489,11 +490,20 @@ let typeValue = typeBox?.getAttribute("data-value");
 let activeInstructionsValue = instructionsListbox?.getAttribute("data-value");
 
 function applyFilters() {
-  if (!searchEl) return games;
-  const q = searchEl.value.trim().toLowerCase();
-  games.sort((a, b) => (b.limited ? 1 : 0) - (a.limited ? 1 : 0));
+  let filteredGames = hideExpiredGames
+    ? games.filter((g) => {
+        let gameCodes = codes[g.id];
+        let expired =
+          gameCodes?.at(-1) || gameCodes.slice(0, -1).every((c) => c.expired);
+        return !expired;
+      })
+    : games;
 
-  let list = games.filter((g) => g.title.toLowerCase().includes(q));
+  if (!searchEl) return filteredGames;
+  const q = searchEl.value.trim().toLowerCase();
+  filteredGames.sort((a, b) => (b.limited ? 1 : 0) - (a.limited ? 1 : 0));
+
+  let list = filteredGames.filter((g) => g.title.toLowerCase().includes(q));
   if (platformValue !== "all")
     list = list.filter((g) => {
       if (platformValue === "Multi") {
@@ -591,6 +601,7 @@ function render(showBusy = false, keepFocus = false) {
     let gameCodes = codes[g.id];
     let expired =
       gameCodes?.at(-1) || gameCodes.slice(0, -1).every((c) => c.expired);
+    // build card
     const card = document.createElement("article");
     card.className = "card";
     card.innerHTML = `
@@ -891,7 +902,7 @@ function openModal(id, title) {
   codesWrapper.innerHTML = "";
   list.forEach((c, i) => {
     const code = c.code;
-    if ((c.expired == true || allExpired) && hideExpired) return;
+    if ((c.expired == true || allExpired) && hideExpiredCodes) return;
     const row = document.createElement("div");
     row.className = "code-line";
     if (c.expired == true || allExpired) row.classList.add("expired");
@@ -965,8 +976,9 @@ function copyText(text, btn) {
     btn.classList.contains("copied") ||
     btn.innerHTML === newIcon ||
     btn.disabled
-  )
+  ) {
     return; // prevent spamming
+  }
   navigator.clipboard?.writeText(text).then(() => {
     btn.classList.add("copied");
     const prev = btn.innerHTML;

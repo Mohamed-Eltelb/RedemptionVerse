@@ -253,20 +253,7 @@
 .copy-icon-btn .icon {
   pointer-events: none;
 }
-/* .copy-icon-btn:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(var(--accent2), 1),
-    rgba(var(--accent1), 1)
-  );
-} */
-/* .copy-icon-btn:active {
-  transform: scale(0.92);
-} */
-/* .copy-icon-btn.copied {
-  background: linear-gradient(90deg, #34d399, #059669);
-  color: #031810;
-} */
+
 /* --- Expired Style --- */
 .code-line.expired {
   position: relative;
