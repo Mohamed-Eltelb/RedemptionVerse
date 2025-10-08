@@ -873,6 +873,16 @@ function openModal(id, title) {
   const instructionsPlatforms = Object.keys(gamesInstructions[currentGameId]);
   const platsList = modal.querySelector(".listbox-options");
   platsList.innerHTML = "";
+
+  const single = instructionsPlatforms.length === 1;
+  const svg = instructionsListbox.querySelector("svg");
+  const display = instructionsListbox.querySelector(".listbox-display");
+
+  svg.style.display = single ? "none" : "block";
+  instructionsListbox.setAttribute("aria-disabled", single);
+  display.style.cursor = single ? "default" : "pointer";
+  display.disabled = single;
+
   instructionsPlatforms.forEach((g) => {
     const li = document.createElement("li");
     const id = "plat-opt-" + g.toLowerCase().replace(/[^a-z0-9]+/g, "-");
