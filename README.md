@@ -201,13 +201,6 @@ RedemptionVerse is an independent project and is not affiliated with, endorsed b
 This project is licensed under the MIT License — see the [`LICENSE`](LICENSE) file for details.
 
 ---
-## Maintenance Checklist
-- [ ] Prune expired codes
-- [ ] Add new game/service entries
-- [ ] Verify platform instructions
-- [ ] Run a manual accessibility pass (keyboard + screen reader)
-
----
 ## Support
 Have a question or want an enhancement? Open an issue or start a discussion.
 
