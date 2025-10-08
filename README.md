@@ -15,6 +15,7 @@ Discover and redeem codes for games and gaming services (Xbox Game Pass, PlaySta
 - [Report Flow](#report-flow)
 - [Performance Notes](#performance-notes)
 - [Deployment](#deployment)
+ - [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [Privacy & Data](#privacy--data)
 - [Disclaimer](#disclaimer)
@@ -166,6 +167,13 @@ Because it’s static, you can host on any static provider (GitHub Pages, Netlif
 1. Push the repository to GitHub
 2. In repo Settings → Pages, set Source to `main` and root folder
 3. Wait for the build; Pages will publish your site URL
+
+---
+## Screenshots
+
+![Landing – Homepage](assets/landing_preview.png)
+
+![Library – All Codes](assets/library_preview.png)
 
 ---
 ## Contributing
