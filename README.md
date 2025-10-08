@@ -1,6 +1,6 @@
 # RedemptionVerse
 
-Discover and redeem codes for games and gaming services (Xbox Game Pass, PlayStation Plus, Steam / PC launchers, digital currency, bundles, and more). The project is a fast, static, front‑end experience focused on clarity, accessibility, and zero back‑end dependencies.
+Discover and redeem codes for games and gaming services (Xbox Game Pass, PlayStation Plus, Steam/PC launchers, digital currency, bundles, and more). This is a fast, static, front‑end experience focused on clarity, accessibility, and zero back‑end dependencies.
 
 ---
 ## Table of Contents
@@ -10,76 +10,69 @@ Discover and redeem codes for games and gaming services (Xbox Game Pass, PlaySta
 - [Data Model](#data-model)
 - [UI Architecture](#ui-architecture)
 - [Accessibility (A11y)](#accessibility-a11y)
-- [Adding / Updating Content](#adding--updating-content)
+- [Content Maintenance](#content-maintenance)
 - [Styling & Theming](#styling--theming)
-- [Report Flow Logic](#report-flow-logic)
-- [Copy & Redeem Modal Flow](#copy--redeem-modal-flow)
+- [Report Flow](#report-flow)
 - [Performance Notes](#performance-notes)
-- [Roadmap Ideas](#roadmap-ideas)
+- [Deployment](#deployment)
 - [Contributing](#contributing)
 - [Privacy & Data](#privacy--data)
 - [Disclaimer](#disclaimer)
 
 ---
 ## Live Preview / Usage
-This is a pure static site. To run locally:
+Pure static site — no build needed.
 
-1. Clone or download the repository.
-2. Open `index.html` directly in your browser (double‑click or drag into a tab).  
-   (Optional) Serve with a lightweight static server for correct relative path handling.
+1) Open locally
+- Clone/download the repo
+- Double‑click `index.html` (or drag into your browser)
 
-Example (Node, if desired):
+2) Optional local server (recommended for consistent paths)
 ```bash
 npx serve .
 ```
-Then visit: http://localhost:3000 (port may vary).
-
-No build step, bundler, or package manager is required.
+Then visit the shown http://localhost:PORT.
 
 ---
 ## Features
-- Landing page with hero, "How It Works", platforms, latest drops, FAQ, final CTA.
+- Polished landing page with hero, How It Works, platforms, latest drops, FAQ, and final call‑to‑action.
 - Full library page (`all-codes.html`) with:
-  - Search (debounced input)
-  - Custom ARIA listboxes (Sort, Platform, Type, Reason selector in report modal)
-  - Pagination (adaptive ellipsis algorithm)
-  - Responsive CSS grid
-  - Empty state with inline clear button
-- Data‑driven redemption modal (codes + context‑aware instructions per platform or game).
-- Code copy buttons with optimistic UI feedback (icon swap + revert).
-- Report modal:
-  - Multi‑select codes via checkboxes
-  - Custom listbox for reason
-  - Validation + inline feedback state machine
-- Centralized instruction templates plus game‑specific overrides.
-- Lightweight theming via CSS variables (`:root`).
-- Accessible semantics: landmarks, ARIA attributes, live regions, keyboard navigation.
-- No external JS dependencies (fully framework‑agnostic).
+  - Debounced search
+  - Custom ARIA listboxes for Sort, Platform, Type, and Report Reason
+  - Pagination with ellipsis compaction
+  - Responsive grid + empty state with inline “Clear Filters”
+- Redeem modal:
+  - Codes + platform/game‑specific Instructions in tabbed panels
+  - Description and platform badges (PC, Xbox, PlayStation, Switch, etc.)
+  - Segmented two‑tab switch with a shared sliding gradient highlight that moves on hover and when switching tabs
+- Copy buttons with optimistic checkmark feedback
+- Report modal with multi‑select checkboxes, custom reason listbox, and inline validation
+- Theming via CSS variables; accessible, keyboard‑friendly interactions
+- Vanilla HTML/CSS/JS only — no external JS dependencies
 
 ---
 ## Project Structure
 ```
-index.html          # Landing / marketing + 'Latest Drops'
-all-codes.html      # Full library page (search / filters / pagination)
+index.html          # Landing / marketing
+all-codes.html      # Full library (search / filters / pagination)
 style.css           # Global design system + layout + shared components
-games.css           # Page-specific & modal/listbox/report enhancements
-games.js            # Data + rendering + filtering + modals + reporting logic
-assets/             # Images / logos / cover art
+games.css           # Library page, modal, listboxes, pagination, badges
+games.js            # Data, rendering, filtering, modals, reporting, tabs
+assets/             # Images / logos / covers
 ```
 
 ---
 ## Data Model
-Defined at the top of `games.js`:
+All data lives in `games.js`.
 
 ### Games Array
-Each game / service entry:
 ```js
 {
-  id: Number,              // unique identifier (integer)
+  id: Number,              // unique identifier
   title: String,           // display title
   desc: String,            // short description
-  cover: String,           // image path or remote URL
-  platform: String,        // comma+space delimited list (e.g. "PC, Xbox, PlayStation")
+  cover: String,           // image path or URL
+  platform: String,        // comma-separated list (e.g. "PC, Xbox, PlayStation")
   type: 'Game' | 'Service' | 'In-game item'
 }
 ```
@@ -87,153 +80,127 @@ Each game / service entry:
 ### Codes Map
 ```js
 const codes = {
-  [gameId: number]: [ 'CODE1', 'CODE2', ... ]
+  [gameId]: [
+    { code: String, expired: Boolean },
+    // ...more objects
+    0 // sentinel at the end (truthy → all codes considered expired)
+  ]
 }
 ```
-If an ID has no entry or an empty array → modal shows "No codes available." fallback.
+Notes:
+- If there’s no array or there are no non‑expired codes, the modal shows a fallback.
+- The final array element is a sentinel used in rendering (present and truthy = treat as all expired).
 
 ### Instructions
-- `baseInstructions` – keyed by platform token (`PC`, `Xbox`, `PlayStation`, `Switch`, `Multi`).
-- `gameSpecificInstructions` – keyed by `id` to override with a custom array (e.g. GOG flow).
-The resolver picks in order: `gameSpecificInstructions[id]` → `baseInstructions[platformString]` → `baseInstructions['Multi']`.
+- `baseInstructions`: common flows keyed by platform tokens (e.g., `PC`, `Xbox`, `PlayStation`, `Switch`, `Multi`, `steam`, `gog`).
+- `gamesInstructions`: overrides keyed by `id`, each mapping one or more platform/context labels (e.g., `Browser`, `Battle.net App`, `All Platforms`) to an ordered list of steps (strings with limited allowed HTML).
 
 ---
 ## UI Architecture
 | Layer | Responsibility |
-|-------|----------------|
-| HTML  | Semantic scaffolding (sections, headings, nav, modals). |
-| CSS (`style.css`) | Global theme, grids, cards, hero, sections, modal base. |
-| CSS (`games.css`) | Filters shell, pagination, custom listbox, redeem/report details. |
-| JS (`games.js`) | Data, render pipeline, filtering, pagination, modal & report flows, listbox accessibility logic. |
+| --- | --- |
+| HTML | Semantic sections, headings, nav, modals. |
+| CSS (`style.css`) | Global theme, layout, shared components, controls. |
+| CSS (`games.css`) | Filters shell, pagination, listboxes, modal details, badges, tabs. |
+| JS (`games.js`) | Data, render pipeline, filtering, pagination, modals, report flow, listbox a11y, tab switching. |
 
-Render cycle: `render()` → applies filters → slices current page → injects card HTML → binds button events → updates meta + pagination.
+Render cycle: `render()` applies filters, paginates, injects cards, binds events, and updates meta + pagination.
 
-Pagination condenses ranges when page count > 7 using ellipsis placeholders.
+Tabs: two buttons (`Codes`, `Instructions`) with ARIA roles. A shared `.tab-highlight` element slides between them on hover and activation for a smooth, tactile feel.
 
 ---
 ## Accessibility (A11y)
-- Custom listboxes implement `role="listbox"`, `aria-activedescendant`, `aria-selected`, keyboard arrows, Escape collapse, and roving selection.
-- Live regions (`aria-live="polite"`) announce result counts and loading status.
-- Modals use `aria-modal="true"`, manage focus trapping heuristically (return focus to opener) and set `aria-hidden` while toggled.
-- Screen reader–only text for structural headings (`.sr-only`).
-- High‑contrast gradients kept subtle; text uses accessible luminance against dark background.
-
-Improvements to consider: formal focus trap loop, `inert` on background when modal open, better labeling of copy buttons with code content via `aria-label="Copy code XXXX"`.
+- Custom listboxes use `role="listbox"`, `aria-activedescendant`, `aria-selected`, and support Enter/Space, Arrow keys, and Escape to collapse.
+- Results bar uses `aria-live="polite"` for status updates.
+- Modals use `aria-modal="true"`, return focus on close, and allow Escape to dismiss.
+- Tabs use `role="tablist"`, `role="tab"`, `role="tabpanel"` with Arrow/Home/End key support.
+- Screen‑reader‑only utility (`.sr-only`) keeps headings/anchors accessible.
 
 ---
-## Adding / Updating Content
-### Add a Game / Service
-1. Append a new object to `games` with a unique incremental `id`.
-2. (Optional) Add an array of codes in `codes[id]`.
-3. (Optional) Add specific instructions in `gameSpecificInstructions[id]`.
-4. Include art in `assets/` or use an external URL.
+## Content Maintenance
+### Add a Game/Service
+1. Append an object to `games` with a new `id`.
+2. Optionally add codes to `codes[id]`.
+3. Optionally add `gamesInstructions[id]` entries.
+4. Place artwork in `assets/` or use a remote URL.
 
-### Add Codes Later
-Just push new entries into the array (order preserved):
-```js
-codes[GAME_ID] = [...codes[GAME_ID], 'NEW-CODE-123'];
-```
-Re-open the modal or re-run `render()` to see changes.
+### Update Codes
+Append/remove objects in `codes[id]` (set `expired: true` when applicable). Reopen the modal or call `render()` to see changes.
 
-### Remove / Expire Codes
-Delete from the array or set it empty to show fallback.
+### Expire/Prune
+Remove items or mark them expired; use the sentinel if all are expired.
 
 ---
 ## Styling & Theming
-Core variables live in `:root` of `style.css`:
+Core variables in `:root` within `style.css`:
 ```css
---bg, --text, --accent1, --accent2, --muted, --radius, --glass-border
+--bg, --text, --panel, --glass, --accent1, --accent2, --muted,
+--glass-border, --radius, --glass-blur
 ```
-Change the radial gradient + accent RGB tuples for quick theme swaps. Components rely on layered translucent backgrounds for a glassy, low-bandwidth aesthetic.
+Adjust accent RGB tuples to re‑skin quickly. Components use layered translucent backgrounds for a glassy aesthetic. A special `.limited` pill badge is available for “Limited/Hot/New” tags with gradient, icon, and optional shine.
 
 ---
-## Report Flow Logic
-1. User opens Redeem Modal → clicks "Report".
-2. Report modal populates codes dynamically via `populateReportCodes(gameId)`.
-3. Validation ensures:
-   - At least one checkbox selected
-   - Reason chosen (custom listbox data attribute)
-4. Simulated async (`setTimeout`) to mimic submission; console logs payload:
+## Report Flow
+1. Open the Redeem modal → click “Report”.
+2. Codes list populates dynamically; select one or more.
+3. Choose a reason (custom listbox) and optionally add comments.
+4. Submit triggers a simulated async handler and success feedback (replace with a real API when ready).
+
+Payload shape (example):
 ```js
 {
-  gameId, codes: [...], reason, comments, timestamp
+  gameId, codes: ["..."], reason, comments, timestamp
 }
 ```
-5. Success message clears after a delay and closes modal.
-
-Integration idea: Replace the simulated block with a `fetch('/api/report', {method:'POST', body: JSON.stringify(payload)})` call.
-
----
-## Copy & Redeem Modal Flow
-- Modal constructed on demand with code rows + instructions list (`<ol class="redeem-steps">`).
-- Copy icon swaps to a checkmark for 1.4s after `navigator.clipboard.writeText()` resolves.
-- No codes = graceful message panel.
 
 ---
 ## Performance Notes
-- Pure DOM manipulation; minimal reflow due to batch rendering per page.
 - No external libraries → small footprint.
-- Images: mixture of local assets and remote headers; consider adding `loading="lazy"` if switching to `<img>` tags inside cards.
-- Could inline critical CSS or add a tiny build step if scaling.
+- Batched DOM updates per page; adaptive pagination.
+- Mixed local/remote images; consider `loading="lazy"` if switching to `<img>` tags inside the grid.
 
 ---
-## Roadmap Ideas
-| Priority | Idea |
-|----------|------|
-| High | Persist filters in query params (`?q=&platform=&page=`) |
-| High | Real backend or serverless endpoint for reports & code freshness |
-| Medium | Tag/genre system & filter (currently placeholder variable `activeGenre`) |
-| Medium | Dark/light theme toggle (toggle CSS variables) |
-| Medium | Sorting by "Newest Added" (track timestamps) |
-| Low | Service worker for offline + stale‑while‑revalidate updates |
-| Low | Analytics dashboard (aggregate report reasons) |
+## Deployment
+Because it’s static, you can host on any static provider (GitHub Pages, Netlify, Vercel, etc.). For GitHub Pages:
+
+1. Push the repository to GitHub
+2. In repo Settings → Pages, set Source to `main` and root folder
+3. Wait for the build; Pages will publish your site URL
 
 ---
 ## Contributing
 1. Fork the repo
-2. Create a feature branch: `feat/add-new-platform`
-3. Commit changes with clear messages
-4. Open a Pull Request describing rationale & screenshots (if UI changes)
+2. Create a feature branch: `feat/your-change`
+3. Commit with clear messages
+4. Open a PR with rationale and screenshots for UI changes
 
-Coding style: keep vanilla JS, avoid adding frameworks unless the scope changes. Strive for semantic HTML and maintain ARIA integrity.
+Coding style: keep vanilla JS, semantic HTML, and ARIA integrity. Avoid adding frameworks unless the scope changes.
 
 ---
 ## Privacy & Data
-- No tracking scripts included.
-- All logic executes client‑side only.
-- Reports currently log to the browser console only (no data leaves the user device).
+- No tracking scripts
+- All logic runs client‑side only
+- Reports currently log to the browser console (no data leaves the device)
 
-If adding telemetry, document it clearly and obtain consent where applicable.
+If you later add telemetry or a backend, document it clearly and obtain consent where applicable.
 
 ---
 ## Disclaimer
-RedemptionVerse is an independent project and is not affiliated with, endorsed by, or sponsored by any publishers, platforms, or service providers mentioned. Logos, trademarks, and brand names are the property of their respective owners. Sample codes in this repository may be placeholders or expired and are for demonstration purposes.
+RedemptionVerse is an independent project and is not affiliated with, endorsed by, or sponsored by any publishers, platforms, or service providers mentioned. Logos, trademarks, and brand names are the property of their respective owners. Sample codes may be placeholders or expired and are for demonstration purposes.
 
 ---
 ## License
-A license file has not been added yet. Recommended choices:
-- **MIT** – permissive, common for open web projects
-- **Apache 2.0** – explicit patent grant
-- **GPLv3** – copyleft (if you want derivatives to remain open)
-
-Add a `LICENSE` file to formalize usage rights.
+This project is licensed under the MIT License — see the [`LICENSE`](LICENSE) file for details.
 
 ---
-## Quick Maintenance Checklist
+## Maintenance Checklist
 - [ ] Prune expired codes
 - [ ] Add new game/service entries
-- [ ] Verify platform instructions correctness
+- [ ] Verify platform instructions
 - [ ] Run a manual accessibility pass (keyboard + screen reader)
 
 ---
-### Screenshots (Optional)
-You can add screenshots to `assets/` and embed them here:
-```
-![Landing](assets/landing_preview.png)
-![Library](assets/library_preview.png)
-```
-
----
-Need help or want an enhancement drafted? Open an issue or start a discussion.
+## Support
+Have a question or want an enhancement? Open an issue or start a discussion.
 
 Enjoy exploring the universe of redemption codes ✨
