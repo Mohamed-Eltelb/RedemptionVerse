@@ -254,7 +254,6 @@ const codes = {
   22: [{ code: "VK7JG-NPHTM-C97JM-9MPGT-3V66T", expired: false }, 0],
 };
 
-// redemption instructions keyed by platform or specific game id
 const baseInstructions = {
   PC: [
     "Launch the PC platform launcher and ensure you are signed in.",
@@ -809,7 +808,7 @@ if (reportTrigger) {
   });
 }
 
-// --- Modal logic (always shows codes + instructions) ---
+// --- Modal logic ---
 const modal = document.getElementById("modal");
 const codesWrapper = document.getElementById("codesWrapper");
 const instructionsEl = document.getElementById("modal-instructions");

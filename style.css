@@ -6,6 +6,8 @@
   --text: #e8eefb;
   --panel: rgba(255, 255, 255, 0.04);
   --glass: rgba(255, 255, 255, 0.03);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.06);
   --accent1: 92, 67, 232; /* purple */
   --accent2: 21, 181, 255; /* blue */
   --muted: #a6b0c3;
@@ -628,8 +630,6 @@ footer {
 }
 
 .report-btn {
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.06);
   position: fixed;
   bottom: 15px;
   left: 15px;
