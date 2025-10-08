@@ -42,7 +42,7 @@ const games = [
     cover: "assets/freefire.jpg",
     platform: "Phone",
     type: "In-game item",
-    limited: true
+    limited: true,
   },
   {
     id: 6,
@@ -491,6 +491,8 @@ let activeInstructionsValue = instructionsListbox?.getAttribute("data-value");
 function applyFilters() {
   if (!searchEl) return games;
   const q = searchEl.value.trim().toLowerCase();
+  games.sort((a, b) => (b.limited ? 1 : 0) - (a.limited ? 1 : 0));
+
   let list = games.filter((g) => g.title.toLowerCase().includes(q));
   if (platformValue !== "all")
     list = list.filter((g) => {
