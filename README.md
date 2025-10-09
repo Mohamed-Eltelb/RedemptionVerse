@@ -6,6 +6,7 @@ Discover and redeem codes for games and gaming services (Xbox Game Pass, PlaySta
 
 ## Table of Contents
 
+- [Live Demo](#live-demo)
 - [Live Preview / Usage](#live-preview--usage)
 - [Features](#features)
 - [Project Structure](#project-structure)
@@ -21,6 +22,13 @@ Discover and redeem codes for games and gaming services (Xbox Game Pass, PlaySta
 - [Contributing](#contributing)
 - [Privacy & Data](#privacy--data)
 - [Disclaimer](#disclaimer)
+
+---
+
+## Live Demo
+
+- Vercel: https://redemption-verse.vercel.app/
+- Netlify: https://redemptionverse.netlify.app/
 
 ---
 
