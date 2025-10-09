@@ -951,7 +951,7 @@ function openModal(id, title) {
   modal.setAttribute("aria-hidden", "false");
   lastFocus = document.activeElement;
   // focus first copy button if present else close button
-  const firstCopy = codesWrapper.querySelector("button.copy-btn");
+  const firstCopy = codesWrapper.querySelector("button.copy-icon-btn");
   (firstCopy || modal.querySelector(".close-x")).focus();
   document.body.style.overflow = "hidden";
   // Reset tab state to Codes on open

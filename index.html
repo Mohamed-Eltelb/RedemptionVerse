@@ -134,8 +134,8 @@
         added daily.</p>
       <h3 id="games-heading" class="sr-only">Games list</h3>
 
-      <div class="results-bar" aria-live="polite" aria-atomic="true" id="resultsMeta">Loading games…</div>
-      <div class="grid" id="gamesGrid" aria-live="polite" aria-busy="true"></div>
+  <div class="results-bar" aria-live="polite" aria-atomic="true" id="resultsMeta">Loading games…</div>
+  <div class="grid" id="gamesGrid" aria-live="polite" aria-busy="true"></div>
 
     </section>
 
@@ -301,22 +301,6 @@
   </div>
 
   <script src="games.js"></script>
-  <script>
-    // Populate Latest Drops on landing (uses global games from games.js once loaded)
-    (function populateLatest() {
-      const tgt = document.getElementById('latestGrid');
-      if (!tgt || !window.games) return;
-      // pick first 6 (or random shuffle)
-      const picks = window.games.slice(0, 6);
-      tgt.innerHTML = picks.map(g => `<article class="card" style="min-height:100%">
-          <div class="cover" style="background-image:url('${g.cover}')" role="img" aria-label="${g.title} cover art"></div>
-          <h3 style="margin:0 0 6px 0; font-size:16px">${g.title}</h3>
-          <p style="margin:0 0 10px 0; font-size:13px; color:var(--muted)">${g.desc}</p>
-          <div class="meta"><span style="font-size:12px; color:var(--muted)">${g.platform}</span>
-          <button class="small-btn" onclick="openModal(${g.id}, '${g.title.replace(/'/g, '&#39;')}')">Redeem</button></div>
-      </article>`).join('');
-    })();
-  </script>
 </body>
 
 </html>

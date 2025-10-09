@@ -103,8 +103,6 @@ header {
   height: 52px;
   backdrop-filter: blur(6px);
 }
-.title {
-}
 .title h1 {
   margin: 0;
   font-family: "Orbitron", sans-serif;
@@ -285,6 +283,7 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   white-space: normal;
@@ -729,3 +728,4 @@ footer {
   width: 16px;
   height: 16px;
 }
+
