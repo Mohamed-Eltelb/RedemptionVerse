@@ -729,3 +729,16 @@ footer {
   height: 16px;
 }
 
+/* Accessibility: respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .report-btn:hover {
+    transform: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  }
+}
