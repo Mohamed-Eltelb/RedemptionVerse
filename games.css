@@ -584,6 +584,22 @@
   resize: vertical;
 }
 
+/* Settings modal form tweaks reuse report modal look */
+.settings-form .form-group:nth-child(3) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.settings-form .form-group label {
+  font-size: 13px;
+  color: #e8eefb;
+}
+.settings-form input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: rgb(var(--accent2));
+}
+
 /* Ensure embedded listbox in report modal spans full width */
 .report-modal .listbox {
   width: 100%;

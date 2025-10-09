@@ -200,7 +200,7 @@ const codes = {
   4: [
     { code: "N3TB6-5RJWB-KZ9BT-36FTJ-RWBBK", expired: false },
     { code: "ZB9TR-6WBJ3-T35RK-9SZFT-3KBJW", expired: false },
-    0,
+    1,
   ],
   5: [{ code: "RTB9K-J3W6B-9TFR3-ZB63K-WJ5TB", expired: false }, 0],
   6: [
@@ -466,12 +466,47 @@ const reportSubmitDefaultText = reportSubmitBtn?.textContent || "Submit";
 if (reportCodesList) reportCodesList.setAttribute("tabindex", "-1");
 
 let PAGE_SIZE = 9;
-if (window.location.pathname.endsWith("index.html") || !pagination) {
-  PAGE_SIZE = 6;
-}
 let currentPage = 1;
 let hideExpiredCodes = false;
 let hideExpiredGames = false;
+if (window.location.pathname.endsWith("index.html") || !pagination) {
+  PAGE_SIZE = 6;
+  hideExpiredGames = true;
+  hideExpiredCodes = true;
+}
+// Settings / persistence
+const SETTINGS_KEY = "rv-settings-v1";
+function loadSettings() {
+  try {
+    const raw = localStorage.getItem(SETTINGS_KEY);
+    if (!raw) return;
+    const s = JSON.parse(raw);
+    if (typeof s.hideExpiredCodes === "boolean")
+      hideExpiredCodes = s.hideExpiredCodes;
+    if (typeof s.hideExpiredGames === "boolean")
+      hideExpiredGames = s.hideExpiredGames;
+    if (typeof s.pageSize === "number" && Number.isFinite(s.pageSize))
+      PAGE_SIZE = s.pageSize;
+    if (window.location.pathname.endsWith("index.html") || !pagination) {
+      PAGE_SIZE = 6;
+    }
+  } catch {}
+}
+function saveSettings() {
+  try {
+    localStorage.setItem(
+      SETTINGS_KEY,
+      JSON.stringify({
+        hideExpiredCodes,
+        hideExpiredGames,
+        pageSize: PAGE_SIZE,
+      })
+    );
+  } catch {}
+}
+if (!window.location.pathname.endsWith("index.html") || pagination) {
+  loadSettings();
+}
 
 function escapeHtml(s) {
   return String(s).replace(
@@ -589,7 +624,7 @@ function render(showBusy = false, keepFocus = false) {
     if (emptyState) {
       emptyState.style.display = "flex";
       grid.setAttribute("aria-busy", "false");
-      pagination.innerHTML = "";
+      if (pagination) pagination.innerHTML = "";
     }
     return;
   } else {
@@ -647,7 +682,7 @@ function render(showBusy = false, keepFocus = false) {
   });
 
   renderPagination(total, currentPage);
-  if (!keepFocus && searchEl) searchEl.focus();
+  // if (!keepFocus && searchEl) searchEl.focus();
 }
 
 function renderInstructions() {
@@ -1253,3 +1288,93 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 // Initial render
 render();
+
+// --- Settings modal logic ---
+(function initSettings() {
+  const settingsBtn = document.getElementById("settingsBtn");
+  const settingsModal = document.getElementById("settingsModal");
+  if (!settingsBtn || !settingsModal) return;
+  const chkHideGames = document.getElementById("set-hide-expired-games");
+  const chkHideCodes = document.getElementById("set-hide-expired-codes");
+  const pageSizeBox = document.getElementById("pageSizeBox");
+  const settingsReset = document.getElementById("settingsReset");
+
+  function syncUIFromState() {
+    if (chkHideGames) chkHideGames.checked = !!hideExpiredGames;
+    if (chkHideCodes) chkHideCodes.checked = !!hideExpiredCodes;
+    if (pageSizeBox) {
+      const val = String(PAGE_SIZE);
+      // If on index page, cap at 6
+      const desired =
+        window.location.pathname.endsWith("index.html") || !pagination
+          ? "6"
+          : val;
+      setListboxValue(pageSizeBox, desired);
+    }
+  }
+  function openSettingsModal() {
+    syncUIFromState();
+    settingsModal.style.display = "flex";
+    settingsModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    settingsBtn.blur();
+    // focus first control
+    (chkHideGames || settingsModal.querySelector(".close-x")).focus();
+  }
+  function doCloseSettingsModal() {
+    settingsModal.style.display = "none";
+    settingsModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "auto";
+    settingsBtn.focus();
+  }
+  window.closeSettingsModal = doCloseSettingsModal;
+  settingsBtn.addEventListener("click", openSettingsModal);
+  settingsModal.addEventListener("click", (e) => {
+    if (e.target === settingsModal) doCloseSettingsModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && settingsModal.style.display === "flex") {
+      doCloseSettingsModal();
+    }
+  });
+
+  // wire toggles
+  chkHideGames?.addEventListener("change", (e) => {
+    hideExpiredGames = !!e.target.checked;
+    currentPage = 1;
+    saveSettings();
+    render();
+  });
+  chkHideCodes?.addEventListener("change", (e) => {
+    hideExpiredCodes = !!e.target.checked;
+    saveSettings();
+    // If modal is open, re-render its code list by reopening
+    if (modal && modal.style.display === "flex" && currentGameId) {
+      // re-render just codes panel
+      const title = games.find((g) => g.id === currentGameId)?.title || "";
+      openModal(currentGameId, title);
+    }
+  });
+  initListbox(pageSizeBox, (val) => {
+    const num = parseInt(val, 10);
+    if (!Number.isFinite(num)) return;
+    if (window.location.pathname.endsWith("index.html") || !pagination) {
+      PAGE_SIZE = 6; // enforce for index
+    } else {
+      PAGE_SIZE = num;
+    }
+    currentPage = 1;
+    saveSettings();
+    render();
+  });
+  settingsReset?.addEventListener("click", () => {
+    hideExpiredCodes = false;
+    hideExpiredGames = false;
+    PAGE_SIZE =
+      window.location.pathname.endsWith("index.html") || !pagination ? 6 : 9;
+    saveSettings();
+    syncUIFromState();
+    currentPage = 1;
+    render();
+  });
+})();

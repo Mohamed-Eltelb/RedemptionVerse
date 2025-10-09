@@ -508,7 +508,7 @@ footer {
 .redeem-card-content {
   margin-top: 0;
   padding: 20px;
-  padding-top: 0;
+  /* padding-top: 0; */
 }
 .modal .code {
   display: flex;
@@ -628,7 +628,7 @@ footer {
   scrollbar-color: #444 rgba(20, 20, 20, 0.6);
 }
 
-.report-btn {
+.settings-btn {
   position: fixed;
   bottom: 15px;
   left: 15px;
@@ -651,15 +651,15 @@ footer {
   transition: transform 0.12s ease, box-shadow 0.12s ease;
   z-index: 10;
 }
-.report-btn:focus {
+.settings-btn:focus {
   outline: 2px solid rgba(99, 102, 241, 0.24);
   outline-offset: 3px;
 }
-.report-btn:hover {
+.settings-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7), 0 0 20px rgba(99, 102, 241, 0.04);
 }
-.report-btn svg {
+.settings-btn svg {
   display: block;
 }
 
@@ -737,7 +737,7 @@ footer {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .report-btn:hover {
+  .settings-btn:hover {
     transform: none;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
   }
